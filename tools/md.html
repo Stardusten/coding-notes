@@ -1,0 +1,138 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/3.0.1/github-markdown.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.18.1/lib/index.min.js">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/markdown-it-texmath@0.6.5/css/texmath.css">
+<link rel="stylesheet" href="https://gitcdn.xyz/repo/goessner/mdmath/master/css/vscode-texmath.css">
+
+</head>
+<body class="markdown-body">
+<a for="toc-anchor" id="markdown"></a><h1 id="markdown-3" data-line="0" class="code-line">Markdown</h1>
+<a for="toc-anchor" id="%E8%A1%A8%E6%A0%BC"></a><h2 id="e8a1a8e6a0bc-3" data-line="2" class="code-line">表格</h2>
+<p data-line="4" class="code-line"><em>Example</em></p>
+<pre><code data-line="6" class="code-line language-Markdown"><div><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">center</span>&gt;</span></span>
+
+|  Method  |             Description              |
+| :------: | :----------------------------------: |
+|  <span class="hljs-code">`GET`</span>   | :material-check:     Fetch resource  |
+|  <span class="hljs-code">`PUT`</span>   | :material-check-all: Update resource |
+| <span class="hljs-code">`DELETE`</span> | :material-close:     Delete resource |
+
+<span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">center</span>&gt;</span></span>
+</div></code></pre>
+<p data-line="18" class="code-line"><em>Result</em></p>
+<center>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Method</th>
+<th style="text-align:center">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>GET</code></td>
+<td style="text-align:center">:material-check:     Fetch resource</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>PUT</code></td>
+<td style="text-align:center">:material-check-all: Update resource</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>DELETE</code></td>
+<td style="text-align:center">:material-close:     Delete resource</td>
+</tr>
+</tbody>
+</table>
+</center>
+<p data-line="30" class="code-line">vscode 自动格式化快捷键：<kbd>option</kbd> + <kbd>shift</kbd> + <kbd>F</kbd></p>
+<a for="toc-anchor" id="%E6%96%87%E5%AD%97"></a><h2 id="e69687e5ad97-3" data-line="32" class="code-line">文字</h2>
+<a for="toc-anchor" id="%E5%B1%85%E4%B8%AD"></a><h3 id="e5b185e4b8ad-3" data-line="34" class="code-line">居中</h3>
+<p data-line="36" class="code-line"><em>Example</em></p>
+<pre><code data-line="38" class="code-line language-Markdown"><div><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">center</span>&gt;</span></span>求知若渴，虚心若愚<span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">center</span>&gt;</span></span>
+</div></code></pre>
+<p data-line="42" class="code-line"><em>Result</em></p>
+<center>求知若渴，虚心若愚</center>
+<a for="toc-anchor" id="%E5%B1%85%E5%8F%B3"></a><h3 id="e5b185e58fb3-3" data-line="46" class="code-line">居右</h3>
+<p data-line="48" class="code-line"><em>Example</em></p>
+<pre><code data-line="50" class="code-line language-Markdown"><div><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"text-align: right"</span>&gt;</span></span>求知若渴，虚心若愚<span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+</div></code></pre>
+<p data-line="54" class="code-line"><em>Result</em></p>
+<div style="text-align: right">求知若渴，虚心若愚</div>
+<a for="toc-anchor" id="%E9%AB%98%E4%BA%AE-%26-%E4%B8%8B%E5%88%92%E7%BA%BF-%26-%E5%88%A0%E9%99%A4%E7%BA%BF"></a><h3 id="e9ab98e4baae--e4b88be58892e7babf--e588a0e999a4e7babf-3" data-line="57" class="code-line">高亮 &amp; 下划线 &amp; 删除线</h3>
+<p data-line="59" class="code-line"><em>Example</em></p>
+<pre><code data-line="61" class="code-line language-markdown"><div>  ==This was marked==
+  This was inserted^^
+  ~~This was deleted~~
+</div></code></pre>
+<p data-line="67" class="code-line"><em>Result</em></p>
+<p data-line="69" class="code-line"><mark>This was marked</mark>
+^^This was inserted^^
+<s>This was deleted</s></p>
+<a for="toc-anchor" id="embed"></a><h2 id="embed-3" data-line="73" class="code-line">Embed</h2>
+<a for="toc-anchor" id="%E9%9F%B3%E4%B9%90"></a><h3 id="e99fb3e4b990-3" data-line="75" class="code-line">音乐</h3>
+<a for="toc-anchor" id="%E5%9C%A8%E7%BA%BF%E9%9F%B3%E9%A2%91"></a><h4 id="e59ca8e7babfe99fb3e9a291-3" data-line="77" class="code-line">在线音频</h4>
+<p data-line="79" class="code-line"><em>Example</em></p>
+<pre><code data-line="81" class="code-line language-markdown"><div><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">center</span>&gt;</span></span>
+<span class="hljs-code">    &lt;audio</span>
+<span class="hljs-code">        controls</span>
+<span class="hljs-code">        src="https://raw.githubusercontent.com/Stardusten/coding-notes/main/resources/obito.mp3"&gt;</span>
+<span class="hljs-code">            Your browser does not support the</span>
+<span class="hljs-code">            &lt;code&gt;audio&lt;/code&gt; element.</span>
+<span class="hljs-code">    &lt;/audio&gt;</span>
+<span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">center</span>&gt;</span></span>
+</div></code></pre>
+<p data-line="92" class="code-line"><em>Result</em></p>
+<center>
+    <audio
+        controls
+        src="https://raw.githubusercontent.com/Stardusten/coding-notes/main/resources/obito.mp3">
+            Your browser does not support the
+            <code>audio</code> element.
+    </audio>
+</center>
+<a for="toc-anchor" id="%E7%BD%91%E6%98%93%E4%BA%91%E9%9F%B3%E4%B9%90"></a><h4 id="e7bd91e69893e4ba91e99fb3e4b990-3" data-line="103" class="code-line">网易云音乐</h4>
+<p data-line="105" class="code-line"><em>Example 1</em></p>
+<pre><code data-line="107" class="code-line language-markdown"><div><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">center</span>&gt;</span></span>
+<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">iframe</span> <span class="hljs-attr">frameborder</span>=<span class="hljs-string">"no"</span> <span class="hljs-attr">border</span>=<span class="hljs-string">"0"</span> <span class="hljs-attr">marginwidth</span>=<span class="hljs-string">"0"</span> <span class="hljs-attr">marginheight</span>=<span class="hljs-string">"0"</span> <span class="hljs-attr">width</span>=<span class="hljs-string">330</span> <span class="hljs-attr">height</span>=<span class="hljs-string">86</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"//music.163.com/outchain/player?type=2&amp;id=32752002&amp;auto=1&amp;height=66"</span>&gt;</span></span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">iframe</span>&gt;</span></span>
+<span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">center</span>&gt;</span></span>
+</div></code></pre>
+<p data-line="113" class="code-line"><em>Result 1</em></p>
+<center>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=32752002&auto=1&height=66"></iframe>
+</center>
+<p data-line="119" class="code-line"><em>Example 2</em></p>
+<pre><code data-line="121" class="code-line language-markdown"><div><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">center</span>&gt;</span></span>
+<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">iframe</span> <span class="hljs-attr">frameborder</span>=<span class="hljs-string">"no"</span> <span class="hljs-attr">border</span>=<span class="hljs-string">"0"</span> <span class="hljs-attr">marginwidth</span>=<span class="hljs-string">"0"</span> <span class="hljs-attr">marginheight</span>=<span class="hljs-string">"0"</span> <span class="hljs-attr">width</span>=<span class="hljs-string">298</span> <span class="hljs-attr">height</span>=<span class="hljs-string">52</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"//music.163.com/outchain/player?type=2&amp;id=32752002&amp;auto=1&amp;height=32"</span>&gt;</span></span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">iframe</span>&gt;</span></span>
+<span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">center</span>&gt;</span></span>
+</div></code></pre>
+<p data-line="127" class="code-line"><em>Result 2</em></p>
+<center>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=298 height=52 src="//music.163.com/outchain/player?type=2&id=32752002&auto=1&height=32"></iframe>
+</center>
+<a for="toc-anchor" id="%E8%A7%86%E9%A2%91"></a><h3 id="e8a786e9a291-3" data-line="133" class="code-line">视频</h3>
+<p data-line="135" class="code-line"><em>Example</em></p>
+<pre><code data-line="137" class="code-line language-markdown"><div><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">iframe</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"//player.bilibili.com/player.html?aid=6410834&amp;bvid=BV1Bs411t7Lo&amp;cid=10421871&amp;page=1"</span> <span class="hljs-attr">width</span>=<span class="hljs-string">800</span> <span class="hljs-attr">height</span>=<span class="hljs-string">450</span> <span class="hljs-attr">scrolling</span>=<span class="hljs-string">"no"</span> <span class="hljs-attr">border</span>=<span class="hljs-string">"0"</span> <span class="hljs-attr">frameborder</span>=<span class="hljs-string">"no"</span> <span class="hljs-attr">framespacing</span>=<span class="hljs-string">"0"</span> <span class="hljs-attr">allowfullscreen</span>=<span class="hljs-string">"true"</span>&gt;</span></span> <span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">iframe</span>&gt;</span></span>
+</div></code></pre>
+<p data-line="141" class="code-line"><em>Result</em></p>
+<center>
+<iframe src="//player.bilibili.com/player.html?aid=6410834&bvid=BV1Bs411t7Lo&cid=10421871&page=1" width=800 height=450 scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+</center>
+<a for="toc-anchor" id="pdf"></a><h3 id="pdf-3" data-line="147" class="code-line">PDF</h3>
+<p data-line="149" class="code-line"><em>Example</em></p>
+<pre><code data-line="151" class="code-line language-markdown"><div><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">object</span> <span class="hljs-attr">data</span>=<span class="hljs-string">"http://www.founderfx.cn/resources/support/方正书版2008-210使用指南.pdf"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"application/pdf"</span> <span class="hljs-attr">width</span>=<span class="hljs-string">"700px"</span> <span class="hljs-attr">height</span>=<span class="hljs-string">"700px"</span>&gt;</span></span>
+<span class="hljs-code">    &lt;embed src="http://www.founderfx.cn/resources/support/方正书版2008-210使用指南.pdf"&gt;</span>
+<span class="hljs-code">        &lt;p&gt;This browser does not support PDFs. Please download the PDF to view it: &lt;a href="http://www.founderfx.cn/resources/support/方正书版2008-210使用指南.pdf"&gt;Download PDF&lt;/a&gt;.&lt;/p&gt;</span>
+<span class="hljs-code">    &lt;/embed&gt;</span>
+<span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">object</span>&gt;</span></span>
+</div></code></pre>
+<p data-line="159" class="code-line"><em>Result</em></p>
+<object data="http://www.founderfx.cn/resources/support/方正书版2008-210使用指南.pdf" type="application/pdf" width="700px" height="700px">
+    <embed src="http://www.founderfx.cn/resources/support/方正书版2008-210使用指南.pdf">
+        <p>This browser does not support PDFs. Please download the PDF to view it: <a href="http://www.founderfx.cn/resources/support/方正书版2008-210使用指南.pdf">Download PDF</a>.</p>
+    </embed>
+</object>
+</body></html>

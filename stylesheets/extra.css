@@ -1,0 +1,16 @@
+.md-typeset h4 {
+    color: var(--md-default-fg-color--light);
+    font-size: large;
+    font-weight: normal;
+}
+
+.md-typeset h5 {
+    font-size: medium;
+    font-weight: normal;
+}
+
+.md-typeset h6 {
+    font-size: medium;
+    font-weight: normal;
+}
+

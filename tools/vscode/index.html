@@ -15,7 +15,7 @@
     
     
       
-        <title>Mkdocs - My Coding Notes</title>
+        <title>vscode - My Coding Notes</title>
       
     
     
@@ -66,7 +66,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#mkdocs" class="md-skip">
+        <a href="#vscode" class="md-skip">
           跳转至
         </a>
       
@@ -95,7 +95,7 @@
           </span>
           <span class="md-header-nav__topic md-ellipsis">
             
-              Mkdocs
+              vscode
             
           </span>
         </div>
@@ -155,7 +155,9 @@
         
           
 
-<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  
+
+<nav class="md-tabs md-tabs--active" aria-label="Tabs" data-md-component="tabs">
   <div class="md-tabs__inner md-grid">
     <ul class="md-tabs__list">
       
@@ -228,7 +230,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="../md/" class="md-tabs__link">
+        <a href="../md/" class="md-tabs__link md-tabs__link--active">
           工具
         </a>
       
@@ -644,10 +646,12 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5" checked>
     
     <label class="md-nav__link" for="nav-5">
       工具
@@ -701,11 +705,56 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="../vscode/" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        vscode
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    <a href="./" class="md-nav__link md-nav__link--active">
       vscode
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    单文件调试
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cmake" class="md-nav__link">
+    CMake 调试
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -777,7 +826,14 @@
       
         <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
-    图片放大
+    单文件调试
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cmake" class="md-nav__link">
+    CMake 调试
   </a>
   
 </li>
@@ -794,14 +850,192 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/Stardusten/coding-notes/edit/master/docs/tools/Mkdocs.md" title="编辑此页" class="md-content__button md-icon">
+                  <a href="https://github.com/Stardusten/coding-notes/edit/master/docs/tools/vscode.md" title="编辑此页" class="md-content__button md-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
                   </a>
                 
                 
-                <h1 id="mkdocs">Mkdocs<a class="headerlink" href="#mkdocs" title="Permanent link">&para;</a></h1>
-<h2 id="_1">图片放大<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<p><a href="https://segmentfault.com/a/1190000018592279">参考：基于mkdocs-material实现的帮助中心(markdown + 中文搜索 + 图片放大)</a></p>
+                <h1 id="vscode">vscode<a class="headerlink" href="#vscode" title="Permanent link">&para;</a></h1>
+<h2 id="_1">单文件调试<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>先安装插件 <code>CodeLLDB</code> 替代 vscode 自带的 LLDB 插件，功能更强大，还能在 <strong>集成终端中输入输出</strong> ，而不必打开外部终端</p>
+</div>
+<p><em>tasks.json</em></p>
+<p>用来执行调试前 <strong>编译</strong> 的配置文件</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">{</span>
+    <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;2.0.0&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;tasks&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;label&quot;</span><span class="p">:</span> <span class="s2">&quot;clang++ build active file&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;shell&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;command&quot;</span><span class="p">:</span> <span class="s2">&quot;clang++&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;args&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="s2">&quot;${fileBasename}&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;-o&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;${fileBasenameNoExtension}&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;-g&quot;</span>
+            <span class="p">],</span>
+            <span class="nt">&quot;group&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;kind&quot;</span><span class="p">:</span> <span class="s2">&quot;build&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;isDefault&quot;</span><span class="p">:</span> <span class="kc">true</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+<p><em>launch.json</em></p>
+<p>用来执行 <strong>调试</strong> 的启动配置文件</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">{</span>
+    <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;0.2.0&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;configurations&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;lldb&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;lldb&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;request&quot;</span><span class="p">:</span> <span class="s2">&quot;launch&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;program&quot;</span><span class="p">:</span> <span class="s2">&quot;${fileDirname}/${fileBasenameNoExtension}&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;args&quot;</span><span class="p">:</span> <span class="p">[],</span>
+            <span class="nt">&quot;cwd&quot;</span><span class="p">:</span> <span class="s2">&quot;${workspaceFolder}&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;preLaunchTask&quot;</span><span class="p">:</span> <span class="s2">&quot;clang++ build active file&quot;</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ol>
+<li><code>"program"</code>：可执行文件位置</li>
+<li><code>"preLaunchTask"</code>：执行 <code>launch.json</code> 之前需要执行的任务（一般为编译过程，故应保持与 <code>tasks.json</code> 中的 <code>"label"</code> 项一致）</li>
+</ol>
+</div>
+<h2 id="cmake">CMake 调试<a class="headerlink" href="#cmake" title="Permanent link">&para;</a></h2>
+<p>安装插件 <code>CMake Tools</code></p>
+<p><em>tasks.json</em></p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">{</span>
+    <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;2.0.0&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;tasks&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;label&quot;</span><span class="p">:</span> <span class="s2">&quot;make&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;shell&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;options&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;cwd&quot;</span><span class="p">:</span> <span class="s2">&quot;${workspaceRoot}/build&quot;</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;command&quot;</span><span class="p">:</span> <span class="s2">&quot;make&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;group&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;kind&quot;</span><span class="p">:</span> <span class="s2">&quot;build&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;isDefault&quot;</span><span class="p">:</span> <span class="kc">true</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+<p>上面的代码等价于</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>cd build
+make
+</code></pre></div>
+</td></tr></table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>其实在执行上面的 make 之前，还需要执行下面的命令来创建编译项目所需的makefile文件及其他相关文件
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>mkdir build
+cd build
+cmake ..
+</code></pre></div>
+</td></tr></table>
+但 <code>CMake Tools</code> 插件可以帮我们快速完成上述操作，只需按键：<kbd>command</kbd> + <kbd>P</kbd> ，在输入框中输入
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>&gt;cmake
+</code></pre></div>
+</td></tr></table>
+选择 <code>CMake: Clean Rebuild</code> 执行即可</p>
+</div>
+<p><em>launch.json</em></p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">{</span>
+    <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;0.2.0&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;configurations&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;lldb&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;lldb&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;request&quot;</span><span class="p">:</span> <span class="s2">&quot;launch&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;program&quot;</span><span class="p">:</span> <span class="s2">&quot;${workspaceFolder}/build/main&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;args&quot;</span><span class="p">:</span> <span class="p">[],</span>
+            <span class="nt">&quot;cwd&quot;</span><span class="p">:</span> <span class="s2">&quot;${workspaceFolder}&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;preLaunchTask&quot;</span><span class="p">:</span> <span class="s2">&quot;make&quot;</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>使用 <code>CMake</code> 编译，修改 <code>"preLaunchTask"</code> 项为 <code>make</code> ，<code>program</code> 项修改为 <code>CMakeLists.txt</code> 中生成文件位置</p>
+</div>
                 
               
               
@@ -820,6 +1054,41 @@
       
         
 <footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../IDE/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  上一页
+                </span>
+                IDE 选择
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../../others/xyw/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  下一页
+                </span>
+                Mac 连校园网
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">

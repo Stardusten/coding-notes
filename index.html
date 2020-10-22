@@ -811,13 +811,25 @@
                 
               
               
-                
-
-
-  <h2 id="__comments">评论</h2>
-  <div id="disqus_thread"></div>
-  <script>var disqus_config=function(){this.page.url="None",this.page.identifier="None"};window.addEventListener("load",function(){var e=document,i=e.createElement("script");i.src="//Stardusten.disqus.com/embed.js",i.setAttribute("data-timestamp",+new Date),(e.head||e.body).appendChild(i)})</script>
-
+                <h2 id="__comments">评论</h2>
+<form id="gitalk-form" onsubmit="return false;">
+    <div id="gitalk-container"></div>
+</form>
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="https://cdnjs.loli.net/ajax/libs/blueimp-md5/2.10.0/js/md5.min.js"></script>
+<script>
+    const gitalk = new Gitalk({
+        clientID: '3d99db93e86f2de6a905', // add yourself's
+        clientSecret: 'f6d4c8e087756567add8e2322af92ed52c45097f', // add yourself's
+        repo: 'comment',
+        owner: 'Stardusten',
+        admin: ['Stardusten'],
+        id: md5(location.pathname),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    })
+    gitalk.render('gitalk-container')
+</script>
               
             </article>
           </div>

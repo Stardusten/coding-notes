@@ -155,7 +155,9 @@
         
           
 
-<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  
+
+<nav class="md-tabs md-tabs--active" aria-label="Tabs" data-md-component="tabs">
   <div class="md-tabs__inner md-grid">
     <ul class="md-tabs__list">
       
@@ -228,7 +230,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="../md/" class="md-tabs__link">
+        <a href="./" class="md-tabs__link md-tabs__link--active">
           工具
         </a>
       
@@ -644,10 +646,12 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5" checked>
     
     <label class="md-nav__link" for="nav-5">
       工具
@@ -660,6 +664,75 @@
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Mkdocs
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    <a href="./" class="md-nav__link md-nav__link--active">
+      Mkdocs
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    图片放大
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gitalk" class="md-nav__link">
+    基于 Gitalk 搭建评论系统
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../pd/" class="md-nav__link">
+      Parallels Tools
+    </a>
+  </li>
+
         
           
           
@@ -867,9 +940,9 @@
     <span class="kr">const</span> <span class="nx">gitalk</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Gitalk</span><span class="p">({</span>
         <span class="nx">clientID</span><span class="o">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="c1">// add yourself&#39;s</span>
         <span class="nx">clientSecret</span><span class="o">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="c1">// add yourself&#39;s</span>
-        <span class="nx">repo</span><span class="o">:</span> <span class="s1">&#39;comment&#39;</span><span class="p">,</span>
-        <span class="nx">owner</span><span class="o">:</span> <span class="s1">&#39;50u1w4y&#39;</span><span class="p">,</span>
-        <span class="nx">admin</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;50u1w4y&#39;</span><span class="p">],</span>
+        <span class="nx">repo</span><span class="o">:</span> <span class="s1">&#39;comment&#39;</span><span class="p">,</span> <span class="c1">// add yourself&#39;s</span>
+        <span class="nx">owner</span><span class="o">:</span> <span class="s1">&#39;Stardusten&#39;</span><span class="p">,</span>
+        <span class="nx">admin</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;Stardusten&#39;</span><span class="p">],</span>
         <span class="nx">id</span><span class="o">:</span> <span class="nx">md5</span><span class="p">(</span><span class="nx">location</span><span class="p">.</span><span class="nx">pathname</span><span class="p">),</span>      <span class="c1">// Ensure uniqueness and length less than 50</span>
         <span class="nx">distractionFreeMode</span><span class="o">:</span> <span class="kc">false</span>  <span class="c1">// Facebook-like distraction free mode</span>
     <span class="p">})</span>
@@ -879,7 +952,7 @@
 </td></tr></table>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>注意把注释的部分改为自己的</p>
+<p>注意 <code>repo</code> 填的是 <strong>仓库名</strong> 而不是地址，否则就会出现 <code>Failed: NOT Found</code></p>
 </div>
                 
               
@@ -911,6 +984,41 @@
       
         
 <footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../../ds/link/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  上一页
+                </span>
+                链表
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../pd/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  下一页
+                </span>
+                Parallels Tools
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">

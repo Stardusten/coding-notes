@@ -1,0 +1,1385 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <meta name="author" content="Stardust">
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.1.0">
+    
+    
+      
+        <title>二叉搜索树 - My Coding Notes</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.bc7e593a.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab28b872.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#ffffff">
+        
+      
+    
+    
+    
+      
+        
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=:300,400,400i,700%7CFira+Mono&display=fallback">
+        <style>body,input{font-family:"",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Fira Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="preference" data-md-color-primary="white" data-md-color-accent="indigo">
+      
+        <script>matchMedia("(prefers-color-scheme: dark)").matches&&document.body.setAttribute("data-md-color-scheme","slate")</script>
+      
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="../.." title="My Coding Notes" class="md-header-nav__button md-logo" aria-label="My Coding Notes">
+      
+  <img src="../../logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            My Coding Notes
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              二叉搜索树
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header-nav__source">
+        
+<a href="https://github.com/Stardusten/coding-notes/" title="前往 GitHub 仓库" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Stardusten/coding-notes
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+
+  
+
+<nav class="md-tabs md-tabs--active" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../.." class="md-tabs__link">
+          简介
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    
+    
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../algo/sort/quick/" class="md-tabs__link">
+          算法
+        </a>
+      
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../hash/" class="md-tabs__link md-tabs__link--active">
+          数据结构
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    
+    
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../math/shulun/prime/" class="md-tabs__link">
+          数学
+        </a>
+      
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../tools/Mkdocs/" class="md-tabs__link">
+          工具
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../others/xyw/" class="md-tabs__link">
+          杂项
+        </a>
+      
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="My Coding Notes" class="md-nav__button md-logo" aria-label="My Coding Notes">
+      
+  <img src="../../logo.svg" alt="logo">
+
+    </a>
+    My Coding Notes
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/Stardusten/coding-notes/" title="前往 GitHub 仓库" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Stardusten/coding-notes
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-1" type="checkbox" id="nav-1">
+    
+    <label class="md-nav__link" for="nav-1">
+      简介
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="简介" data-md-level="1">
+      <label class="md-nav__title" for="nav-1">
+        <span class="md-nav__icon md-icon"></span>
+        简介
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../.." class="md-nav__link">
+      欢迎
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../timeline/" class="md-nav__link">
+      今天又变强了呢
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      算法
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="算法" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        <span class="md-nav__icon md-icon"></span>
+        算法
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-1" type="checkbox" id="nav-2-1">
+    
+    <label class="md-nav__link" for="nav-2-1">
+      排序
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="排序" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-1">
+        <span class="md-nav__icon md-icon"></span>
+        排序
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../algo/sort/quick/" class="md-nav__link">
+      快速排序
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
+    
+    <label class="md-nav__link" for="nav-3">
+      数据结构
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="数据结构" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon"></span>
+        数据结构
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../hash/" class="md-nav__link">
+      哈希表
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-2" type="checkbox" id="nav-3-2" checked>
+    
+    <label class="md-nav__link" for="nav-3-2">
+      树
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="树" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-2">
+        <span class="md-nav__icon md-icon"></span>
+        树
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        二叉搜索树
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    <a href="./" class="md-nav__link md-nav__link--active">
+      二叉搜索树
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    概念
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    操作
+  </a>
+  
+    <nav class="md-nav" aria-label="操作">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    遍历
+  </a>
+  
+    <nav class="md-nav" aria-label="遍历">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dlr" class="md-nav__link">
+    先根遍历（DLR）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ldr" class="md-nav__link">
+    中根遍历（LDR）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lrd" class="md-nav__link">
+    后根遍历（LRD）
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    最值查找
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    插入
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    删除
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    计算各结点子树大小
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    求元素排名
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#k" class="md-nav__link">
+    求排名为 k 的元素
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      数学
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="数学" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon"></span>
+        数学
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-1" type="checkbox" id="nav-4-1">
+    
+    <label class="md-nav__link" for="nav-4-1">
+      数论
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="数论" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-1">
+        <span class="md-nav__icon md-icon"></span>
+        数论
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../math/shulun/prime/" class="md-nav__link">
+      素数
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      工具
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="工具" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        <span class="md-nav__icon md-icon"></span>
+        工具
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../tools/Mkdocs/" class="md-nav__link">
+      Mkdocs
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../tools/pd/" class="md-nav__link">
+      Parallels Desktop
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../tools/md/" class="md-nav__link">
+      Markdown
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../tools/katex/" class="md-nav__link">
+      Katex
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../tools/IDE/" class="md-nav__link">
+      IDE 选择
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../tools/vscode/" class="md-nav__link">
+      vscode
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      杂项
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="杂项" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        <span class="md-nav__icon md-icon"></span>
+        杂项
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../others/xyw/" class="md-nav__link">
+      Mac 连校园网
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    概念
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    操作
+  </a>
+  
+    <nav class="md-nav" aria-label="操作">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    遍历
+  </a>
+  
+    <nav class="md-nav" aria-label="遍历">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dlr" class="md-nav__link">
+    先根遍历（DLR）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ldr" class="md-nav__link">
+    中根遍历（LDR）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lrd" class="md-nav__link">
+    后根遍历（LRD）
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    最值查找
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    插入
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    删除
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    计算各结点子树大小
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    求元素排名
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#k" class="md-nav__link">
+    求排名为 k 的元素
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/Stardusten/coding-notes/edit/master/docs/ds/BST.md" title="编辑此页" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="_1">二叉搜索树<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<h2 id="_2">概念<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p><strong>二叉查找树</strong>（Binary Search Tree，简称 BST），也称 <strong>二叉查找树</strong>、<strong>有序二叉树</strong>、<strong>排序二叉树</strong></p>
+<ol>
+<li>空树是二叉搜索树</li>
+<li>左子树上所有节点的值 <strong>小于</strong> 根节点的值</li>
+<li>右子树上所有节点的值 <strong>大于</strong> 根节点的值</li>
+<li>任意节点的左、右子树也是二叉搜索树</li>
+</ol>
+<h2 id="_3">操作<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1">// 结点定义</span>
+<span class="k">struct</span> <span class="nc">node</span><span class="p">{</span>
+    <span class="kt">int</span> <span class="n">val</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">siz</span><span class="p">;</span> <span class="c1">// 该节点子树大小</span>
+    <span class="kt">int</span> <span class="n">cnt</span><span class="p">;</span> <span class="c1">// 值为 val 的元素个数，用于处理重复值</span>
+    <span class="n">node</span><span class="o">*</span> <span class="n">lc</span><span class="p">;</span> <span class="c1">// 左孩子指针</span>
+    <span class="n">node</span><span class="o">*</span> <span class="n">rc</span><span class="p">;</span> <span class="c1">// 右孩子指针</span>
+    <span class="n">node</span><span class="p">(){</span>
+        <span class="n">val</span><span class="o">=</span><span class="n">cnt</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+        <span class="n">siz</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
+        <span class="n">lc</span><span class="o">=</span><span class="n">rc</span><span class="o">=</span><span class="k">nullptr</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+</code></pre></div>
+</td></tr></table>
+<h3 id="_4">遍历<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p><strong>L</strong> 表示遍历 <strong>左子树</strong></p>
+<p><strong>R</strong> 表示遍历 <strong>右子树</strong></p>
+<p><strong>D</strong> 表示访问 <strong>根节点</strong></p>
+<h4 id="dlr">先根遍历（DLR）<a class="headerlink" href="#dlr" title="Permanent link">&para;</a></h4>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="nf">DLR</span><span class="p">(</span><span class="k">const</span> <span class="n">node</span><span class="o">*</span> <span class="n">root</span><span class="p">){</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">root</span><span class="o">==</span><span class="k">nullptr</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+    <span class="c1">// display root</span>
+    <span class="n">DLR</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">lc</span><span class="p">);</span>
+    <span class="n">DLR</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">rc</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+<h4 id="ldr">中根遍历（LDR）<a class="headerlink" href="#ldr" title="Permanent link">&para;</a></h4>
+<p>二叉搜索树的 中根遍历序 是有序的</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="nf">LDR</span><span class="p">(</span><span class="k">const</span> <span class="n">node</span><span class="o">*</span> <span class="n">root</span><span class="p">){</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">root</span><span class="o">==</span><span class="k">nullptr</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+    <span class="n">LDR</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">lc</span><span class="p">);</span>
+    <span class="c1">// display root</span>
+    <span class="n">LDR</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">rc</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+<h4 id="lrd">后根遍历（LRD）<a class="headerlink" href="#lrd" title="Permanent link">&para;</a></h4>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="nf">LRD</span><span class="p">(</span><span class="k">const</span> <span class="n">node</span><span class="o">*</span> <span class="n">root</span><span class="p">){</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">root</span><span class="o">==</span><span class="k">nullptr</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+    <span class="n">LRD</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">lc</span><span class="p">);</span>
+    <span class="n">LRD</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">rc</span><span class="p">);</span>
+    <span class="c1">// display root</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+<h3 id="_5">最值查找<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p>二叉搜索树上的最大（小）值为 <strong>右（左）链的顶点</strong></p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">node</span><span class="o">*</span> <span class="nf">find_max</span><span class="p">(</span><span class="n">node</span><span class="o">*</span> <span class="n">root</span><span class="p">){</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">rc</span><span class="o">==</span><span class="k">nullptr</span><span class="p">)</span> <span class="k">return</span> <span class="n">root</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">find_max</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">rc</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="n">node</span><span class="o">*</span> <span class="nf">find_min</span><span class="p">(</span><span class="n">node</span><span class="o">*</span> <span class="n">root</span><span class="p">){</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">lc</span><span class="o">==</span><span class="k">nullptr</span><span class="p">)</span> <span class="k">return</span> <span class="n">root</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">find_min</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">lc</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+<h3 id="_6">插入<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="nf">insert</span><span class="p">(</span><span class="n">node</span><span class="o">*&amp;</span> <span class="n">root</span><span class="p">,</span><span class="kt">int</span> <span class="n">_val</span><span class="p">){</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">root</span><span class="o">==</span><span class="k">nullptr</span><span class="p">){</span> <span class="c1">// 找到插入点，插入</span>
+        <span class="n">root</span><span class="o">=</span><span class="k">new</span> <span class="n">node</span><span class="p">;</span>
+        <span class="n">root</span><span class="o">-&gt;</span><span class="n">val</span><span class="o">=</span><span class="n">_val</span><span class="p">;</span>
+        <span class="n">root</span><span class="o">-&gt;</span><span class="n">cnt</span><span class="o">++</span><span class="p">;</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">root</span><span class="o">-&gt;</span><span class="n">siz</span><span class="o">++</span><span class="p">;</span> 
+    <span class="c1">// 更新 siz，注意在搜索时更新而不是回溯时更新</span>
+    <span class="c1">// 更新 siz 之所以放在这里而不是开头或递归搜索前，是因为如果插入新 node，新 node 本身 cnt=1 不用加，放在开头就会多加一个，而如果已存在相同 val 的结点，则还要让这个节点的 cnt++，放在递归前面就会在找到 val 相同的结点后直接 return 掉而不会更新这个结点的 siz 了</span>
+    <span class="c1">// 当然，也可以把 siz 更新语句写在下面的 if 循环里面，再把 root-&gt;siz++ 放到递归前面</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">val</span><span class="o">==</span><span class="n">_val</span><span class="p">){</span> <span class="c1">// 已存在 val，cnt++</span>
+        <span class="n">root</span><span class="o">-&gt;</span><span class="n">cnt</span><span class="o">++</span><span class="p">;</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">_val</span><span class="o">&lt;</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">val</span><span class="p">)</span> <span class="k">return</span> <span class="n">insert</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">lc</span><span class="p">,</span><span class="n">_val</span><span class="p">);</span> <span class="c1">// 递归搜索左子树，找插入点</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">_val</span><span class="o">&gt;</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">val</span><span class="p">)</span> <span class="k">return</span> <span class="n">insert</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">rc</span><span class="p">,</span><span class="n">_val</span><span class="p">);</span> <span class="c1">// 递归搜索右子树，找插入点</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+<h3 id="_7">删除<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="nf">left_del</span><span class="p">(</span><span class="n">node</span><span class="o">*&amp;</span> <span class="n">target</span><span class="p">,</span><span class="n">node</span><span class="o">*&amp;</span> <span class="n">root</span><span class="p">){</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">lc</span><span class="o">==</span><span class="k">nullptr</span><span class="p">){</span>
+        <span class="n">swap</span><span class="p">(</span><span class="n">target</span><span class="o">-&gt;</span><span class="n">val</span><span class="p">,</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">val</span><span class="p">);</span>
+        <span class="k">delete</span> <span class="n">root</span><span class="p">;</span>
+        <span class="n">root</span><span class="o">=</span><span class="k">nullptr</span><span class="p">;</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">left_del</span><span class="p">(</span><span class="n">target</span><span class="p">,</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">lc</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="kt">void</span> <span class="nf">del</span><span class="p">(</span><span class="n">node</span><span class="o">*&amp;</span> <span class="n">root</span><span class="p">,</span><span class="kt">int</span> <span class="n">_val</span><span class="p">){</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">root</span><span class="o">==</span><span class="k">nullptr</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">_val</span><span class="o">==</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">val</span><span class="p">){</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">cnt</span><span class="o">&gt;</span><span class="mi">1</span><span class="p">){</span>
+            <span class="n">root</span><span class="o">-&gt;</span><span class="n">cnt</span><span class="o">--</span><span class="p">;</span>
+            <span class="k">return</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">lc</span><span class="o">==</span><span class="k">nullptr</span><span class="p">){</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">rc</span><span class="o">==</span><span class="k">nullptr</span><span class="p">){</span>
+            <span class="c1">// C1: lc=rc=nil（叶子节点）</span>
+                <span class="k">delete</span> <span class="n">root</span><span class="p">;</span>
+                <span class="n">root</span><span class="o">=</span><span class="k">nullptr</span><span class="p">;</span>
+                <span class="k">return</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="c1">// C2: lc=nil rc!=nil（链节点）</span>
+            <span class="k">delete</span> <span class="n">root</span><span class="p">;</span>
+            <span class="n">root</span><span class="o">=</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">rc</span><span class="p">;</span>
+            <span class="k">return</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">rc</span><span class="o">==</span><span class="k">nullptr</span><span class="p">){</span>
+        <span class="c1">// C3: lc!=nil rc=nil（链节点）</span>
+            <span class="k">delete</span> <span class="n">root</span><span class="p">;</span>
+            <span class="n">root</span><span class="o">=</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">lc</span><span class="p">;</span>
+            <span class="k">return</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="c1">// C4: lc,rc!=nil（左右子节点均非空）</span>
+        <span class="c1">// 使用 find_max 或 find_min 函数将难以置空父指针，故直接写一个递归删除函数</span>
+        <span class="n">left_del</span><span class="p">(</span><span class="n">root</span><span class="p">,</span><span class="n">root</span><span class="p">);</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="c1">// 删除时，结点直接被删掉，不用考虑当前节点 siz 更新的问题，与插入一样，选择在搜索时更新而不是回溯时更新</span>
+    <span class="n">root</span><span class="o">-&gt;</span><span class="n">siz</span><span class="o">--</span><span class="p">;</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">_val</span><span class="o">&lt;</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">val</span><span class="p">)</span> <span class="n">del</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">lc</span><span class="p">,</span><span class="n">_val</span><span class="p">);</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">_val</span><span class="o">&gt;</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">val</span><span class="p">)</span> <span class="n">del</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">rc</span><span class="p">,</span><span class="n">_val</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+<h3 id="_8">计算各结点子树大小<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="nf">calc_siz</span><span class="p">(</span><span class="n">node</span><span class="o">*&amp;</span> <span class="n">root</span><span class="p">){</span> <span class="c1">// 计算各节点子树大小</span>
+<span class="c1">// 注意递归边界不能用 root==nullptr，因为这样回溯后 root 左右子节点均为空，无法计算 siz</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">lc</span><span class="o">==</span><span class="k">nullptr</span><span class="p">){</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">rc</span><span class="o">==</span><span class="k">nullptr</span><span class="p">){</span> <span class="c1">// lc=rc=nil</span>
+            <span class="k">return</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="c1">// lc=nil rc!=nil</span>
+        <span class="n">calc_siz</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">rc</span><span class="p">);</span>
+        <span class="n">root</span><span class="o">-&gt;</span><span class="n">siz</span><span class="o">+=</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">rc</span><span class="o">-&gt;</span><span class="n">siz</span><span class="p">;</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">rc</span><span class="o">==</span><span class="k">nullptr</span><span class="p">){</span> <span class="c1">// lc!=nil rc=nil</span>
+        <span class="n">calc_siz</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">lc</span><span class="p">);</span>
+        <span class="n">root</span><span class="o">-&gt;</span><span class="n">siz</span><span class="o">+=</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">lc</span><span class="o">-&gt;</span><span class="n">siz</span><span class="p">;</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="c1">// lc,rc!=nil</span>
+    <span class="n">calc_siz</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">lc</span><span class="p">);</span>
+    <span class="n">root</span><span class="o">-&gt;</span><span class="n">siz</span><span class="o">+=</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">lc</span><span class="o">-&gt;</span><span class="n">siz</span><span class="p">;</span>
+    <span class="n">calc_siz</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">rc</span><span class="p">);</span>
+    <span class="n">root</span><span class="o">-&gt;</span><span class="n">siz</span><span class="o">+=</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">rc</span><span class="o">-&gt;</span><span class="n">siz</span><span class="p">;</span>
+    <span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+<h3 id="_9">求元素排名<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<p><strong>定义</strong>：某个元素的排名指的是 <strong>小于该元素的元素个数 +1</strong></p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="nf">calc_rank</span><span class="p">(</span><span class="k">const</span> <span class="n">node</span><span class="o">*</span> <span class="n">root</span><span class="p">,</span><span class="kt">int</span> <span class="n">_val</span><span class="p">){</span>
+    <span class="c1">// 根节点的 rank 只与其左子树大小有关</span>
+    <span class="c1">// 对根节点的右孩子，有三部分比他小，1. 根节点的左子树 2. 根节点本身 3. 这个右孩子自己的左子树</span>
+
+    <span class="c1">// 找到要求的结点，如果其左子树非空，则其左子树上所有结点都比它小，注意根据定义加一</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">_val</span><span class="o">==</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">val</span><span class="p">)</span> <span class="k">return</span> <span class="n">root</span><span class="o">-&gt;</span><span class="n">lc</span><span class="o">==</span><span class="k">nullptr</span> <span class="o">?</span> <span class="mi">1</span> <span class="o">:</span> <span class="n">root</span><span class="o">-&gt;</span><span class="n">lc</span><span class="o">-&gt;</span><span class="n">siz</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span>
+    <span class="c1">// 从左侧回溯，回溯路上结点都比它大，不满足要求</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">_val</span><span class="o">&lt;</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">val</span><span class="p">)</span>  <span class="k">return</span> <span class="n">calc_rank</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">lc</span><span class="p">,</span><span class="n">_val</span><span class="p">);</span>
+    <span class="c1">// 从右侧回溯，回溯路上每个结点及其左子树都比它小</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">_val</span><span class="o">&gt;</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">val</span><span class="p">)</span>  <span class="k">return</span> <span class="n">calc_rank</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">rc</span><span class="p">,</span><span class="n">_val</span><span class="p">)</span><span class="o">+</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">lc</span><span class="o">-&gt;</span><span class="n">siz</span><span class="o">+</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">cnt</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+<h3 id="k">求排名为 k 的元素<a class="headerlink" href="#k" title="Permanent link">&para;</a></h3>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">node</span><span class="o">*</span> <span class="nf">get_kth</span><span class="p">(</span><span class="n">node</span><span class="o">*</span> <span class="n">root</span><span class="p">,</span><span class="kt">int</span> <span class="n">k</span><span class="p">){</span>
+    <span class="c1">// 首先，一个元素的排名定义为比他小的数的个数+1</span>
+    <span class="c1">// 因此在一颗子树中，根节点的排名取决于其左子树的大小</span>
+    <span class="c1">// 搜索中，考虑状态转移，如果向左儿子继续搜索，小于它的元素不发生改变</span>
+    <span class="c1">// 如果向右儿子继续搜索，则根节点 根节点左子树所有元素都比它小，要从排名中减去</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">lc</span><span class="o">==</span><span class="k">nullptr</span><span class="p">){</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">k</span><span class="mi">-1</span><span class="o">==</span><span class="mi">0</span><span class="p">)</span> <span class="k">return</span> <span class="n">root</span><span class="p">;</span>
+        <span class="k">return</span> <span class="k">nullptr</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">lc</span><span class="o">-&gt;</span><span class="n">siz</span><span class="o">&gt;</span><span class="n">k</span><span class="mi">-1</span><span class="p">)</span> <span class="k">return</span> <span class="n">get_kth</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">lc</span><span class="p">,</span><span class="n">k</span><span class="p">);</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">lc</span><span class="o">-&gt;</span><span class="n">siz</span><span class="o">+</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">cnt</span><span class="o">&lt;=</span><span class="n">k</span><span class="mi">-1</span><span class="p">)</span> <span class="k">return</span> <span class="n">get_kth</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">rc</span><span class="p">,</span><span class="n">k</span><span class="o">-</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">lc</span><span class="o">-&gt;</span><span class="n">siz</span><span class="o">-</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">cnt</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">root</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+                
+              
+              
+                <h2 id="__comments">评论</h2>
+<form id="gitalk-form" onsubmit="return false;">
+    <div id="gitalk-container"></div>
+</form>
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="https://cdnjs.loli.net/ajax/libs/blueimp-md5/2.10.0/js/md5.min.js"></script>
+<script>
+    const gitalk = new Gitalk({
+        clientID: '3d99db93e86f2de6a905', // add yourself's
+        clientSecret: 'f6d4c8e087756567add8e2322af92ed52c45097f', // add yourself's
+        repo: 'comments',
+        owner: 'Stardusten',
+        admin: ['Stardusten'],
+        id: md5(location.pathname),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    })
+    gitalk.render('gitalk-container')
+</script>
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../hash/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  上一页
+                </span>
+                哈希表
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../../math/shulun/prime/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  下一页
+                </span>
+                素数
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/vendor.6a3d08fc.min.js"></script>
+      <script src="../../assets/javascripts/bundle.71201edf.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+      <script>
+        app = initialize({
+          base: "../..",
+          features: ['navigation.instant', 'navigation.expand', 'navigation.tabs'],
+          search: Object.assign({
+            worker: "../../assets/javascripts/worker/search.4ac00218.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+        <script src="../../stylesheets/extra.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

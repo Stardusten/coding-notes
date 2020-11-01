@@ -601,6 +601,30 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../AVL/" class="md-nav__link">
+      AVL 树
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../splay/" class="md-nav__link">
+      Splay 树
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -977,8 +1001,8 @@
     <span class="n">node</span><span class="o">*</span> <span class="n">lc</span><span class="p">;</span> <span class="c1">// 左孩子指针</span>
     <span class="n">node</span><span class="o">*</span> <span class="n">rc</span><span class="p">;</span> <span class="c1">// 右孩子指针</span>
     <span class="n">node</span><span class="p">(){</span>
-        <span class="n">val</span><span class="o">=</span><span class="n">cnt</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
-        <span class="n">siz</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
+        <span class="n">val</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+        <span class="n">cnt</span><span class="o">=</span><span class="n">siz</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
         <span class="n">lc</span><span class="o">=</span><span class="n">rc</span><span class="o">=</span><span class="k">nullptr</span><span class="p">;</span>
     <span class="p">}</span>
 <span class="p">};</span>
@@ -1067,12 +1091,10 @@
 14
 15
 16
-17
-18</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="nf">insert</span><span class="p">(</span><span class="n">node</span><span class="o">*&amp;</span> <span class="n">root</span><span class="p">,</span><span class="kt">int</span> <span class="n">_val</span><span class="p">){</span>
+17</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="nf">insert</span><span class="p">(</span><span class="n">node</span><span class="o">*&amp;</span> <span class="n">root</span><span class="p">,</span><span class="kt">int</span> <span class="n">_val</span><span class="p">){</span>
     <span class="k">if</span><span class="p">(</span><span class="n">root</span><span class="o">==</span><span class="k">nullptr</span><span class="p">){</span> <span class="c1">// 找到插入点，插入</span>
         <span class="n">root</span><span class="o">=</span><span class="k">new</span> <span class="n">node</span><span class="p">;</span>
         <span class="n">root</span><span class="o">-&gt;</span><span class="n">val</span><span class="o">=</span><span class="n">_val</span><span class="p">;</span>
-        <span class="n">root</span><span class="o">-&gt;</span><span class="n">cnt</span><span class="o">++</span><span class="p">;</span>
         <span class="k">return</span><span class="p">;</span>
     <span class="p">}</span>
     <span class="n">root</span><span class="o">-&gt;</span><span class="n">siz</span><span class="o">++</span><span class="p">;</span> 
@@ -1328,13 +1350,13 @@
           </a>
         
         
-          <a href="../../math/shulun/prime/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../AVL/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-footer-nav__title">
               <div class="md-ellipsis">
                 <span class="md-footer-nav__direction">
                   下一页
                 </span>
-                素数
+                AVL 树
               </div>
             </div>
             <div class="md-footer-nav__button md-icon">

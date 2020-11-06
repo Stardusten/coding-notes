@@ -15,7 +15,7 @@
     
     
       
-        <title>Parallels Desktop - My Coding Notes</title>
+        <title>子集枚举 - My Coding Notes</title>
       
     
     
@@ -66,7 +66,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#parallels-desktop" class="md-skip">
+        <a href="#_1" class="md-skip">
           跳转至
         </a>
       
@@ -95,7 +95,7 @@
           </span>
           <span class="md-header-nav__topic md-ellipsis">
             
-              Parallels Desktop
+              子集枚举
             
           </span>
         </div>
@@ -211,7 +211,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="../../algo/zjmj/" class="md-tabs__link">
+        <a href="./" class="md-tabs__link md-tabs__link--active">
           算法
         </a>
       
@@ -237,7 +237,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="../Mkdocs/" class="md-tabs__link md-tabs__link--active">
+        <a href="../../tools/Mkdocs/" class="md-tabs__link">
           工具
         </a>
       
@@ -587,10 +587,12 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" checked>
     
     <label class="md-nav__link" for="nav-4">
       算法
@@ -608,11 +610,103 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="../../algo/zjmj/" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        子集枚举
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    <a href="./" class="md-nav__link md-nav__link--active">
       子集枚举
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    给定大小子集枚举
+  </a>
+  
+    <nav class="md-nav" aria-label="给定大小子集枚举">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    递归
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    二进制法
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    不定大小子集枚举
+  </a>
+  
+    <nav class="md-nav" aria-label="不定大小子集枚举">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    增量构造法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    位向量法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    二进制法
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -643,7 +737,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../algo/sort/quick/" class="md-nav__link">
+    <a href="../sort/quick/" class="md-nav__link">
       快速排序
     </a>
   </li>
@@ -739,12 +833,10 @@
       
       
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+  <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6" checked>
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
     
     <label class="md-nav__link" for="nav-6">
       工具
@@ -764,7 +856,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../Mkdocs/" class="md-nav__link">
+    <a href="../../tools/Mkdocs/" class="md-nav__link">
       Mkdocs
     </a>
   </li>
@@ -774,84 +866,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-      
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="__toc">
-        Parallels Desktop
-        <span class="md-nav__icon md-icon"></span>
-      </label>
-    
-    <a href="./" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../../tools/pd/" class="md-nav__link">
       Parallels Desktop
     </a>
-    
-      
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#manjaro" class="md-nav__link">
-    Manjaro
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#tlp-gui-installer" class="md-nav__link">
-    卡 TLP / 无法进 GUI Installer
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#parallels-tools" class="md-nav__link">
-    安装 Parallels Tools
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#parallels-tools_1" class="md-nav__link">
-    安装 Parallels Tools 后重启黑屏（只能输入字符）
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    虚拟机使用宿主机代理
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    让终端走代理
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-    
   </li>
 
         
@@ -861,7 +880,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../md/" class="md-nav__link">
+    <a href="../../tools/md/" class="md-nav__link">
       Markdown
     </a>
   </li>
@@ -873,7 +892,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../katex/" class="md-nav__link">
+    <a href="../../tools/katex/" class="md-nav__link">
       Katex
     </a>
   </li>
@@ -885,7 +904,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../IDE/" class="md-nav__link">
+    <a href="../../tools/IDE/" class="md-nav__link">
       IDE 选择
     </a>
   </li>
@@ -897,7 +916,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../vscode/" class="md-nav__link">
+    <a href="../../tools/vscode/" class="md-nav__link">
       vscode
     </a>
   </li>
@@ -909,7 +928,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../cmake/" class="md-nav__link">
+    <a href="../../tools/cmake/" class="md-nav__link">
       CMake
     </a>
   </li>
@@ -982,44 +1001,63 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#manjaro" class="md-nav__link">
-    Manjaro
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#tlp-gui-installer" class="md-nav__link">
-    卡 TLP / 无法进 GUI Installer
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#parallels-tools" class="md-nav__link">
-    安装 Parallels Tools
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#parallels-tools_1" class="md-nav__link">
-    安装 Parallels Tools 后重启黑屏（只能输入字符）
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    虚拟机使用宿主机代理
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
-    让终端走代理
+    给定大小子集枚举
   </a>
+  
+    <nav class="md-nav" aria-label="给定大小子集枚举">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    递归
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    二进制法
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    不定大小子集枚举
+  </a>
+  
+    <nav class="md-nav" aria-label="不定大小子集枚举">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    增量构造法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    位向量法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    二进制法
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1035,86 +1073,90 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/Stardusten/coding-notes/edit/master/docs/tools/pd.md" title="编辑此页" class="md-content__button md-icon">
+                  <a href="https://github.com/Stardusten/coding-notes/edit/master/docs/algo/zjmj.md" title="编辑此页" class="md-content__button md-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
                   </a>
                 
                 
-                <h1 id="parallels-desktop">Parallels Desktop<a class="headerlink" href="#parallels-desktop" title="Permanent link">&para;</a></h1>
-<div class="admonition quote">
-<p><strong>系统</strong> macOS High Sierra 10.13.6</p>
-<p><strong>虚拟机</strong> Parallels Desktop 16</p>
-</div>
-<h2 id="manjaro">Manjaro<a class="headerlink" href="#manjaro" title="Permanent link">&para;</a></h2>
-<div class="admonition quote">
-<p><strong>Manjaro</strong> Manjaro-KDE 20.1.1</p>
-</div>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>提前声明：以下内容包含大量 <strong>玄学操作</strong>，使用前请确保已熟练掌握 <strong>删掉重装</strong>，<strong>关机重启</strong> 等基操</p>
-</div>
-<h2 id="tlp-gui-installer">卡 TLP / 无法进 GUI Installer<a class="headerlink" href="#tlp-gui-installer" title="Permanent link">&para;</a></h2>
-<p><em>Solution 1</em></p>
-<p>重启试试（你没看错，我就是 <em>Solution 2</em> + 重启一次才顺利进的 GUI）</p>
-<p><em>Solution 2</em></p>
-<p>不要让 PD 自动识别为 Manjaro Linux. 先不选系统镜像，选要安装的系统类型为 <strong>其他 Linux</strong>，启动后再挂载 Manjaro 的镜像</p>
-<p><em>Solution 3</em></p>
-<p>进入命令行：<kbd>Crtl</kbd> + <kbd>Alt</kbd> + <kbd>F2</kbd></p>
-<p>自行添加上面的组合键，卡 TLP 时使用可以进入命令行，按要求登录后：</p>
-<ol>
-<li>安装 video-vesa 驱动
-   <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>sudo mhwd -i pci video-vesa
-</code></pre></div>
-</td></tr></table></li>
-<li>启动 GUI Installer
-   <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>startx
-</code></pre></div>
-</td></tr></table></li>
-</ol>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>这一方法对 Manjaro 20 好像不太好用，虽然可以强制启动 GUI Installer，但可能会出现 “出现两个鼠标指针” “按安装后无响应” 等问题</p>
-</div>
-<h2 id="parallels-tools">安装 Parallels Tools<a class="headerlink" href="#parallels-tools" title="Permanent link">&para;</a></h2>
-<ol>
-<li>终端挂代理</li>
-<li>配置源
-   <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2
-3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>sudo pacman-mirrors -g
-sudo pacman -Syyu
-reboot
-</code></pre></div>
-</td></tr></table></li>
-<li>打开终端，输入 <code>sudo</code>，打开 Parallels Tools 的镜像，把安装脚本拖入终端，回车，输密码，开始安装</li>
-</ol>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>不挂代理设置源会非常慢</p>
-<p>reboot 后可能镜像名还是 Manjaro KDE 但打开就会发现已经挂载上 Parallels Tools 安装盘了</p>
-<p>源配置完可以顺便安装下字体
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>sudo pacman -S wqy-microhei 
-</code></pre></div>
-</td></tr></table></p>
-<p>第五步安装 Parallels Tools 很慢，请耐心等待，<strong>千万别手贱点退出</strong></p>
-</div>
-<h2 id="parallels-tools_1">安装 Parallels Tools 后重启黑屏（只能输入字符）<a class="headerlink" href="#parallels-tools_1" title="Permanent link">&para;</a></h2>
-<h2 id="_1">虚拟机使用宿主机代理<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<ol>
-<li>网络改为 “桥接模式”</li>
-<li>宿主机代理软件选中 “允许局域网连接”</li>
-<li>虚拟机中使用 <strong>宿主机</strong> IP 和 <strong>监听 port</strong> 即可</li>
-</ol>
-<p><a href="https://zhuanlan.zhihu.com/p/120038973">参考：虚拟机使用代理方案</a></p>
-<h2 id="_2">让终端走代理<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>export ALL_PROXY=socks5://proxyAdress:port
+                <h1 id="_1">子集枚举<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<h2 id="_2">给定大小子集枚举<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h3 id="_3">递归<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>原问题：<span class="arithmatex">\(1,2,3...n\)</span> 这 <span class="arithmatex">\(n\)</span> 个数中选 <span class="arithmatex">\(m\)</span> 个</p>
+<p>如果选择 1 ，则原问题变为：<span class="arithmatex">\(2,3,...n\)</span> 这 <span class="arithmatex">\(n-1\)</span> 个数中选  <span class="arithmatex">\(m-1\)</span> 个</p>
+<p>所以原问题可以递归求解，代码如下：</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="nf">subset</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">[],</span><span class="kt">int</span> <span class="n">l</span><span class="p">,</span><span class="k">const</span> <span class="kt">int</span> <span class="o">&amp;</span> <span class="n">r</span><span class="p">,</span><span class="k">const</span> <span class="kt">int</span> <span class="o">&amp;</span> <span class="kt">int</span> <span class="n">n</span><span class="p">,</span><span class="kt">int</span> <span class="n">m</span><span class="p">){</span>
+    <span class="c1">// l,r 为枚举区间</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">m</span><span class="o">==</span><span class="mi">0</span><span class="p">){</span>
+        <span class="c1">// Finished!</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="n">l</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;=</span><span class="n">r</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">){</span>
+        <span class="c1">// Select a[i]</span>
+        <span class="n">subset</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">l</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">r</span><span class="p">,</span><span class="n">n</span><span class="p">,</span><span class="n">m</span><span class="mi">-1</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 </td></tr></table>
-<p>测试：
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>curl cip.cc
+<p>注意维护每次调用的入口环境：如果要维护所选择元素的 <code>sum</code> ，应该这样写</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6
+7
+8
+9</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="nf">subset</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">[],</span><span class="kt">int</span> <span class="n">l</span><span class="p">,</span><span class="k">const</span> <span class="kt">int</span> <span class="o">&amp;</span> <span class="n">r</span><span class="p">,</span><span class="k">const</span> <span class="kt">int</span> <span class="o">&amp;</span> <span class="kt">int</span> <span class="n">n</span><span class="p">,</span><span class="kt">int</span> <span class="n">m</span><span class="p">,</span><span class="kt">int</span> <span class="n">sum</span><span class="p">){</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">m</span><span class="o">==</span><span class="mi">0</span><span class="p">){</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">sum</span><span class="o">&lt;&lt;</span><span class="sc">&#39; &#39;</span><span class="p">;</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="n">l</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;=</span><span class="n">r</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+        <span class="c1">// sum+=a[i]; 入口环境破坏</span>
+        <span class="n">subset</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">l</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">r</span><span class="p">,</span><span class="n">n</span><span class="p">,</span><span class="n">m</span><span class="mi">-1</span><span class="p">,</span><span class="n">sum</span><span class="o">+</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+<span class="p">}</span>
 </code></pre></div>
-</td></tr></table></p>
-<p><a href="https://blog.fazero.me/2015/09/15/让终端走代理的几种方法/">参考：让终端走代理的几种方法</a></p>
+</td></tr></table>
+<p>可以看到，递归方法传入参数很多，效率不高</p>
+<h3 id="_4">二进制法<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p>用 0 表示 “不选”，1 表示 “选”，则可以将原问题转化为 0-1 序列的全排列问题，手动构造初始 0-1 排列（最大排列）后，再调用 <code>STL</code> 里的 <code>prev_permutation</code> 即可</p>
+<p>如：从 6 个元素中选出 3 个，则最大的 0-1 序列为</p>
+<div class="arithmatex">\[1\ \ 1\ \ 1\ \ 0\ \ 0\ \ 0\]</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code>prev_permutation</code> 包含在头文件 <code>algorithm</code> 中，可以获得比当前排列小的下一个排列，没有比当前小的则返回 0</p>
+<p>类似的还有 <code>next_permutation()</code> ，可以获得比当前排列大的下一个排列，这里为了初始排列构造方便选用 <code>prev_permutation</code></p>
+</div>
+<p>代码如下：</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1">// Input:  n, m, data[n];</span>
+<span class="kt">bool</span><span class="o">*</span> <span class="n">is_selected</span><span class="o">=</span><span class="k">new</span> <span class="kt">bool</span><span class="p">[</span><span class="n">n</span><span class="p">]();</span> <span class="c1">// 初始化为 0</span>
+<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">m</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+    <span class="n">is_selected</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="nb">true</span><span class="p">;</span> <span class="c1">// 构造初始排列</span>
+<span class="k">while</span><span class="p">(</span><span class="n">prev_permutation</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="n">data</span><span class="o">+</span><span class="n">n</span><span class="p">)){</span>
+    <span class="c1">// do something</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+<h2 id="_5">不定大小子集枚举<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<h3 id="_6">增量构造法<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<h3 id="_7">位向量法<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<h3 id="_8">二进制法<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
                 
               
               
@@ -1149,7 +1191,7 @@ reboot
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
         
-          <a href="../Mkdocs/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../../ds/fhq/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-footer-nav__button md-icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
             </div>
@@ -1158,19 +1200,19 @@ reboot
                 <span class="md-footer-nav__direction">
                   上一页
                 </span>
-                Mkdocs
+                fhq_treap
               </div>
             </div>
           </a>
         
         
-          <a href="../md/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../sort/quick/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-footer-nav__title">
               <div class="md-ellipsis">
                 <span class="md-footer-nav__direction">
                   下一页
                 </span>
-                Markdown
+                快速排序
               </div>
             </div>
             <div class="md-footer-nav__button md-icon">

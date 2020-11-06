@@ -16,3 +16,10 @@
     font-weight: normal;
 }
 
+body {
+    background-image:url('bg.png');
+    background-repeat:no-repeat;
+    background-attachment:fixed;
+    background-position:bottom right;
+    background-size: 232.75px 297.75px;
+}

@@ -652,7 +652,7 @@
         
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
-    递归
+    增量构造法
   </a>
   
 </li>
@@ -1010,7 +1010,7 @@
         
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
-    递归
+    增量构造法
   </a>
   
 </li>
@@ -1080,7 +1080,7 @@
                 
                 <h1 id="_1">子集枚举<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
 <h2 id="_2">给定大小子集枚举<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<h3 id="_3">递归<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<h3 id="_3">增量构造法<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <p>原问题：<span class="arithmatex">\(1,2,3...n\)</span> 这 <span class="arithmatex">\(n\)</span> 个数中选 <span class="arithmatex">\(m\)</span> 个</p>
 <p>如果选择 1 ，则原问题变为：<span class="arithmatex">\(2,3,...n\)</span> 这 <span class="arithmatex">\(n-1\)</span> 个数中选  <span class="arithmatex">\(m-1\)</span> 个</p>
 <p>所以原问题可以递归求解，代码如下：</p>
@@ -1129,13 +1129,14 @@
 </td></tr></table>
 <p>可以看到，递归方法传入参数很多，效率不高</p>
 <h3 id="_4">二进制法<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-<p>用 0 表示 “不选”，1 表示 “选”，则可以将原问题转化为 0-1 序列的全排列问题，手动构造初始 0-1 排列（最大排列）后，再调用 <code>STL</code> 里的 <code>prev_permutation</code> 即可</p>
+<p>用 0 表示 “不选”，1 表示 “选”，则可以将原问题转化为 <strong>0-1 序列的全排列问题</strong></p>
+<p>手动构造初始 0-1 排列（ **最大**排列 ）后，再调用 <code>STL</code> 里的 <code>prev_permutation</code> 即可</p>
 <p>如：从 6 个元素中选出 3 个，则最大的 0-1 序列为</p>
 <div class="arithmatex">\[1\ \ 1\ \ 1\ \ 0\ \ 0\ \ 0\]</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p><code>prev_permutation</code> 包含在头文件 <code>algorithm</code> 中，可以获得比当前排列小的下一个排列，没有比当前小的则返回 0</p>
-<p>类似的还有 <code>next_permutation()</code> ，可以获得比当前排列大的下一个排列，这里为了初始排列构造方便选用 <code>prev_permutation</code></p>
+<p>类似的还有 <code>next_permutation()</code> ，可以获得比当前排列大的下一个排列，没有比当前大的则返回 0. 这里为了初始排列构造方便选用 <code>prev_permutation</code></p>
 </div>
 <p>代码如下：</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
@@ -1144,19 +1145,53 @@
 4
 5
 6
-7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1">// Input:  n, m, data[n];</span>
-<span class="kt">bool</span><span class="o">*</span> <span class="n">is_selected</span><span class="o">=</span><span class="k">new</span> <span class="kt">bool</span><span class="p">[</span><span class="n">n</span><span class="p">]();</span> <span class="c1">// 初始化为 0</span>
+7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1">// Input:  n, m, a[n];</span>
+<span class="kt">bool</span><span class="o">*</span> <span class="n">flag</span><span class="o">=</span><span class="k">new</span> <span class="kt">bool</span><span class="p">[</span><span class="n">n</span><span class="p">]();</span> <span class="c1">// 初始化为 0</span>
 <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">m</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
-    <span class="n">is_selected</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="nb">true</span><span class="p">;</span> <span class="c1">// 构造初始排列</span>
-<span class="k">while</span><span class="p">(</span><span class="n">prev_permutation</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="n">data</span><span class="o">+</span><span class="n">n</span><span class="p">)){</span>
+    <span class="n">flag</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="nb">true</span><span class="p">;</span> <span class="c1">// 构造初始排列</span>
+<span class="k">while</span><span class="p">(</span><span class="n">prev_permutation</span><span class="p">(</span><span class="n">flag</span><span class="p">,</span><span class="n">flag</span><span class="o">+</span><span class="n">n</span><span class="p">)){</span>
     <span class="c1">// do something</span>
 <span class="p">}</span>
 </code></pre></div>
 </td></tr></table>
 <h2 id="_5">不定大小子集枚举<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
 <h3 id="_6">增量构造法<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="nf">subset</span><span class="p">(</span><span class="kt">int</span> <span class="n">d</span><span class="p">[],</span><span class="kt">int</span> <span class="n">a</span><span class="p">[],</span><span class="kt">int</span> <span class="n">l</span><span class="p">,</span><span class="kt">int</span> <span class="n">r</span><span class="p">){</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">l</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">d</span><span class="p">[</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]];</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">l</span><span class="p">)</span> <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="c1">// 放入第 l 个元素</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="n">l</span><span class="o">?</span><span class="n">a</span><span class="p">[</span><span class="n">l</span><span class="mi">-1</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span><span class="o">:</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;=</span><span class="n">r</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">){</span>
+        <span class="c1">// l?a[l-1]+1:0 确定从哪里开始放</span>
+        <span class="c1">// 以 d[]={1,2,3}，a[]={0,1} 为例：</span>
+        <span class="c1">// 放第三个元素时，要从下标为 a[2-1]+1=2 的开始放 </span>
+        <span class="n">a</span><span class="p">[</span><span class="n">l</span><span class="p">]</span><span class="o">=</span><span class="n">i</span><span class="p">;</span>
+        <span class="n">subset</span><span class="p">(</span><span class="n">d</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">l</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">r</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
 <h3 id="_7">位向量法<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<p><img src='https://cdn.jsdelivr.net/gh/Stardusten/Pic@master/uPic/1.svg' alt='1' width='400px'/></p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>
+</code></pre></div>
+</td></tr></table>
 <h3 id="_8">二进制法<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>
+</code></pre></div>
+</td></tr></table>
                 
               
               

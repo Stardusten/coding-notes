@@ -833,10 +833,98 @@
       
     
     
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        二维费用背包
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
     <a href="./" class="md-nav__link md-nav__link--active">
       二维费用背包
     </a>
     
+      
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    问题描述
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    方法
+  </a>
+  
+    <nav class="md-nav" aria-label="方法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#0-1" class="md-nav__link">
+    二维 0-1 背包
+  </a>
+  
+    <nav class="md-nav" aria-label="二维 0-1 背包">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    状态转移方程
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    二维完全背包
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    二维多重背包
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../fz/" class="md-nav__link">
+      分组背包
+    </a>
   </li>
 
         
@@ -1208,6 +1296,68 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    问题描述
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    方法
+  </a>
+  
+    <nav class="md-nav" aria-label="方法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#0-1" class="md-nav__link">
+    二维 0-1 背包
+  </a>
+  
+    <nav class="md-nav" aria-label="二维 0-1 背包">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    状态转移方程
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    二维完全背包
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    二维多重背包
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1224,6 +1374,42 @@
                 
                 
                 <h1 id="_1">二维费用背包<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<h2 id="_2">问题描述<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>简单地说，就是 <strong>限制条件有两个</strong> 的情况</p>
+<h2 id="_3">方法<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>再多开一维即可</p>
+<h3 id="0-1">二维 0-1 背包<a class="headerlink" href="#0-1" title="Permanent link">&para;</a></h3>
+<p>先上例题：<a href="https://www.luogu.com.cn/problem/P1855">「Luogu P1855」榨取 kkksc03</a></p>
+<h4 id="_4">状态转移方程<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<p><center>
+<code>f[i][j][k]=max(f[i-1][j][k],f[i-1][j-v[i]][k-w[i]]+c[i])</code>
+</center></p>
+<p>同样使用滚动数组优化掉一维，压缩至二维，得到：</p>
+<p><center>
+<code>f[j][k]=max(f[j][k],f[j-v[i]][k-w[i]]+c[i])</code>
+</center></p>
+<p>考虑枚举顺序，要保证 <code>f[j][k]</code> 先于 <code>f[j-v[i][k-w[i]]</code> 更新，故应逆序枚举 <code>j</code>、<code>k</code></p>
+<p>代码如下：</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="n">V</span><span class="p">;</span><span class="n">j</span><span class="o">&gt;=</span><span class="mi">0</span><span class="p">;</span><span class="n">j</span><span class="o">--</span><span class="p">)</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">k</span><span class="o">=</span><span class="n">W</span><span class="p">;</span><span class="n">k</span><span class="o">&gt;=</span><span class="mi">0</span><span class="p">;</span><span class="n">k</span><span class="o">--</span><span class="p">)</span>
+        <span class="n">f</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">k</span><span class="p">]</span><span class="o">=</span><span class="n">max</span><span class="p">(</span><span class="n">f</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">k</span><span class="p">],</span><span class="n">f</span><span class="p">[</span><span class="n">j</span><span class="o">-</span><span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="p">]][</span><span class="n">k</span><span class="o">-</span><span class="n">w</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span><span class="o">+</span><span class="n">c</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+</code></pre></div>
+</td></tr></table>
+<h3 id="_5">二维完全背包<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p>上例题：没找到 qwq</p>
+<p>0-1 背包枚举顺序改一下就好了，代码如下：</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">j</span><span class="o">&lt;=</span><span class="n">V</span><span class="p">;</span><span class="n">j</span><span class="o">++</span><span class="p">)</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">k</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">k</span><span class="o">&lt;=</span><span class="n">W</span><span class="p">;</span><span class="n">k</span><span class="o">++</span><span class="p">)</span>
+        <span class="n">f</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">k</span><span class="p">]</span><span class="o">=</span><span class="n">max</span><span class="p">(</span><span class="n">f</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">k</span><span class="p">],</span><span class="n">f</span><span class="p">[</span><span class="n">j</span><span class="o">-</span><span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="p">]][</span><span class="n">k</span><span class="o">-</span><span class="n">w</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span><span class="o">+</span><span class="n">c</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+</code></pre></div>
+</td></tr></table>
+<h3 id="_6">二维多重背包<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<p>上例题：也没找到 qwq</p>
+<p>总之很简单拉</p>
                 
               
               
@@ -1273,13 +1459,13 @@
           </a>
         
         
-          <a href="../../../graph/save/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../fz/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-footer-nav__title">
               <div class="md-ellipsis">
                 <span class="md-footer-nav__direction">
                   下一页
                 </span>
-                图的存储
+                分组背包
               </div>
             </div>
             <div class="md-footer-nav__button md-icon">

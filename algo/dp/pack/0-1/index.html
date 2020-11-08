@@ -937,6 +937,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../fz/" class="md-nav__link">
+      分组背包
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -1410,7 +1422,7 @@
 <h3 id="_3">状态定义<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <p>设 <code>f[i][j]</code> 表示只考虑前 <code>i</code> 个物品时，容量为 <code>j</code> 的背包所能达到的最大总价值</p>
 <h3 id="_4">状态转移<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-<p>每件物品只有 <strong>放</strong> 和 <strong>不放</strong> 两种选择</p>
+<p><strong>决策</strong>：每件物品只有 <strong>放</strong> 和 <strong>不放</strong> 两种可能的决策</p>
 <p>考虑物品 <code>i</code> ：</p>
 <ol>
 <li>
@@ -1466,8 +1478,8 @@
 </code></pre></div>
 </td></tr></table>
 <p>看看真正的优化，在 <code>W</code> 较大的时候比较有用</p>
-<p>对于最后一件物品 <code>f[W]</code> ，只要知道 <code>f[W-w[n]]</code> 即可；对于倒数第二件物品 <code>f[W-w[n]]</code> ，只要知道 <code>f[W-(w[n]+w[n-1])]</code> 即可</p>
-<p>依此类推，对于第 <code>i</code> 件物品，只要知道 <code>f[W-(w[n]+...+w[i])]</code> 即可，所以可以有如下操作：</p>
+<p>对于最后一件物品 <code>f[W]</code> ，只要知道 <code>f[W-w[n]]</code> 即可；对于倒数第二件物品 <code>f[W-w[n]]</code> ，只要知道 <code>f[W-w[n...n-1]</code> 即可</p>
+<p>依此类推，对于第 <code>i</code> 件物品，只要知道 <code>f[W-w[n...i])]</code> 即可，所以可以有如下操作：</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3

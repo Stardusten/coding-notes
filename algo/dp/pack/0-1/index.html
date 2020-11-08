@@ -824,14 +824,14 @@
         
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
-    状态
+    状态定义
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
-    转移
+    状态转移
   </a>
   
 </li>
@@ -886,6 +886,54 @@
   
 </nav>
     
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../wq/" class="md-nav__link">
+      完全背包
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../dc/" class="md-nav__link">
+      多重背包
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../hh/" class="md-nav__link">
+      混合背包
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../ew/" class="md-nav__link">
+      二维费用背包
+    </a>
   </li>
 
         
@@ -1040,6 +1088,44 @@
   <li class="md-nav__item">
     <a href="../../../../math/shulun/prime/" class="md-nav__link">
       素数
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-3" type="checkbox" id="nav-5-3">
+    
+    <label class="md-nav__link" for="nav-5-3">
+      二进制
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="二进制" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-3">
+        <span class="md-nav__icon md-icon"></span>
+        二进制
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../math/ejz/bz/" class="md-nav__link">
+      倍增
     </a>
   </li>
 
@@ -1242,14 +1328,14 @@
         
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
-    状态
+    状态定义
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
-    转移
+    状态转移
   </a>
   
 </li>
@@ -1321,9 +1407,9 @@
 <h2 id="_1">问题描述<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>有 <span class="arithmatex">\(n\)</span> 个物品 和 一个容量为 <span class="arithmatex">\(W\)</span> 的背包，每个物品有重量 <span class="arithmatex">\(w_i\)</span> 和价值 <span class="arithmatex">\(v_i\)</span> 两种属性，要求：选若干物品放入背包，使背包中物品的 <strong>总价值最大</strong> 且 <strong>背包中物品的总重量不超过背包的容量</strong></p>
 <h2 id="_2">状态转移方程<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<h3 id="_3">状态<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<h3 id="_3">状态定义<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <p>设 <code>f[i][j]</code> 表示只考虑前 <code>i</code> 个物品时，容量为 <code>j</code> 的背包所能达到的最大总价值</p>
-<h3 id="_4">转移<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<h3 id="_4">状态转移<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <p>每件物品只有 <strong>放</strong> 和 <strong>不放</strong> 两种选择</p>
 <p>考虑物品 <code>i</code> ：</p>
 <ol>
@@ -1340,7 +1426,7 @@
 <p>不过要注意有一类变种：如果题目中附加了条件 <strong>“恰好装满背包”</strong> ，则初始化时除了 <code>f[][0]</code> 初始化为为 0 ，<code>f[][1..V]</code>均应设为 <code>-INF</code></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>几乎所有背包问题的初始化都是上面两种情况之一</p>
+<p>几乎所有背包问题的初始化都是上面两种情况之一，所以在其他背包问题中不再考虑边界条件</p>
 </div>
 <h2 id="_6">规划方向<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
 <h3 id="_7">二维数组存储所有状态<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
@@ -1361,6 +1447,7 @@
 <img src='https://cdn.jsdelivr.net/gh/Stardusten/Pic@master/uPic/2.svg' alt='2' width='500px'/>
 </center></p>
 <p>已经遍历的被更新到状态 <code>i</code> ，没有遍历的维持 <code>i-1</code> 状态，我们要的 <code>f[j-w[i]]</code> 是 <code>i-1</code> 状态的，也就是说要保证更新 <code>f[j]</code> 的时候 <code>f[j-w[i]]</code> 还是 <code>i-1</code> 的状态的，所以要逆序枚举</p>
+<p>从本质上来说，这是因为我们在在考虑第 <code>i-1</code> 件物品时只能做一次决策，做完这次决策就要立马考虑下一个物品 <code>i</code> ，否则就可以在同一个物品上做多次决策，而这是不允许的</p>
 <p>代码如下：</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
@@ -1447,13 +1534,13 @@
           </a>
         
         
-          <a href="../../../graph/save/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../wq/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-footer-nav__title">
               <div class="md-ellipsis">
                 <span class="md-footer-nav__direction">
                   下一页
                 </span>
-                图的存储
+                完全背包
               </div>
             </div>
             <div class="md-footer-nav__button md-icon">

@@ -750,52 +750,9 @@
       
     
     
-      <label class="md-nav__link md-nav__link--active" for="__toc">
-        DP 核心
-        <span class="md-nav__icon md-icon"></span>
-      </label>
-    
     <a href="./" class="md-nav__link md-nav__link--active">
       DP 核心
     </a>
-    
-      
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    状态转移方程
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    边界条件
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    规划方向
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
     
   </li>
 
@@ -829,6 +786,54 @@
   <li class="md-nav__item">
     <a href="../pack/0-1/" class="md-nav__link">
       0-1 背包
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../pack/wq/" class="md-nav__link">
+      完全背包
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../pack/dc/" class="md-nav__link">
+      多重背包
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../pack/hh/" class="md-nav__link">
+      混合背包
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../pack/ew/" class="md-nav__link">
+      二维费用背包
     </a>
   </li>
 
@@ -984,6 +989,44 @@
   <li class="md-nav__item">
     <a href="../../../math/shulun/prime/" class="md-nav__link">
       素数
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-3" type="checkbox" id="nav-5-3">
+    
+    <label class="md-nav__link" for="nav-5-3">
+      二进制
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="二进制" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-3">
+        <span class="md-nav__icon md-icon"></span>
+        二进制
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../math/ejz/bz/" class="md-nav__link">
+      倍增
     </a>
   </li>
 
@@ -1163,35 +1206,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    状态转移方程
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    边界条件
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    规划方向
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -1208,10 +1222,8 @@
                 
                 
                 <h1 id="dp">DP 核心<a class="headerlink" href="#dp" title="Permanent link">&para;</a></h1>
-<p>任何 DP 问题，只要找清楚 <strong>状态转移方程</strong>、<strong>规划边界</strong>、<strong>规划方向</strong> 就能轻松 AC</p>
-<h2 id="_1">状态转移方程<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<h2 id="_2">边界条件<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<h2 id="_3">规划方向<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>局部最优的情况转移出去并不一定是最优的（贪心不能用）</p>
+<p>但是局部最优一定也是由其他局部最优的状态转移得到的（DP YES）</p>
                 
               
               

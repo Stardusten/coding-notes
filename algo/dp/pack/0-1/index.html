@@ -717,19 +717,57 @@
           
           
 
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-3" type="checkbox" id="nav-4-3">
+    
+    <label class="md-nav__link" for="nav-4-3">
+      搜索
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="搜索" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-3">
+        <span class="md-nav__icon md-icon"></span>
+        搜索
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../search/cut/" class="md-nav__link">
+      剪枝
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
   
 
 
   <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-3" type="checkbox" id="nav-4-3" checked>
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-4" type="checkbox" id="nav-4-4" checked>
     
-    <label class="md-nav__link" for="nav-4-3">
+    <label class="md-nav__link" for="nav-4-4">
       动态规划
       <span class="md-nav__icon md-icon"></span>
     </label>
     <nav class="md-nav" aria-label="动态规划" data-md-level="2">
-      <label class="md-nav__title" for="nav-4-3">
+      <label class="md-nav__title" for="nav-4-4">
         <span class="md-nav__icon md-icon"></span>
         动态规划
       </label>
@@ -757,14 +795,14 @@
 
   <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-3-2" type="checkbox" id="nav-4-3-2" checked>
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-4-2" type="checkbox" id="nav-4-4-2" checked>
     
-    <label class="md-nav__link" for="nav-4-3-2">
+    <label class="md-nav__link" for="nav-4-4-2">
       背包 DP
       <span class="md-nav__icon md-icon"></span>
     </label>
     <nav class="md-nav" aria-label="背包 DP" data-md-level="3">
-      <label class="md-nav__title" for="nav-4-3-2">
+      <label class="md-nav__title" for="nav-4-4-2">
         <span class="md-nav__icon md-icon"></span>
         背包 DP
       </label>
@@ -954,6 +992,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../tree/" class="md-nav__link">
+      树形 DP
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -966,14 +1016,14 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-4" type="checkbox" id="nav-4-4">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-5" type="checkbox" id="nav-4-5">
     
-    <label class="md-nav__link" for="nav-4-4">
+    <label class="md-nav__link" for="nav-4-5">
       图论
       <span class="md-nav__icon md-icon"></span>
     </label>
     <nav class="md-nav" aria-label="图论" data-md-level="2">
-      <label class="md-nav__title" for="nav-4-4">
+      <label class="md-nav__title" for="nav-4-5">
         <span class="md-nav__icon md-icon"></span>
         图论
       </label>
@@ -1295,6 +1345,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../others/words/" class="md-nav__link">
+      单词表
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -1432,7 +1494,10 @@
 <p>如果放入 <code>i</code> ，则背包容量要减去 <code>i</code> 的体积 <code>w[i]</code> ，总价值在 <code>i-1</code> 件的基础上加上所放物品的价值 <code>v[i]</code></p>
 </li>
 </ol>
-<p>综上可得 <strong>状态转移方程</strong>：<code>f[i][j]=max(f[i-1][j],f[i-1][j-w[i]]+v[i])</code></p>
+<p>综上可得 <strong>状态转移方程</strong>：</p>
+<p><center>
+<code>f[i][j]=max(f[i-1][j],f[i-1][j-w[i]]+v[i])</code>
+</center></p>
 <h2 id="_5">边界条件<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
 <p>背包问题的边界条件非常简单，<code>dp</code> 数组全部初始化为 0 就好了</p>
 <p>不过要注意有一类变种：如果题目中附加了条件 <strong>“恰好装满背包”</strong> ，则初始化时除了 <code>f[][0]</code> 初始化为为 0 ，<code>f[][1..V]</code>均应设为 <code>-INF</code></p>

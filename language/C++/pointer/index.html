@@ -16,7 +16,7 @@
     
     
       
-        <title>剪枝 - My Coding Notes</title>
+        <title>指针 - My Coding Notes</title>
       
     
     
@@ -98,7 +98,7 @@
           </span>
           <span class="md-header-nav__topic md-ellipsis">
             
-              剪枝
+              指针
             
           </span>
         </div>
@@ -186,7 +186,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="../../../language/C%2B%2B/lrvalue/" class="md-tabs__link">
+        <a href="../lrvalue/" class="md-tabs__link md-tabs__link--active">
           语言
         </a>
       
@@ -218,7 +218,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="../../mj/mjpl/" class="md-tabs__link">
+        <a href="../../../algo/mj/mjpl/" class="md-tabs__link">
           算法
         </a>
       
@@ -360,10 +360,12 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
     
     <label class="md-nav__link" for="nav-2">
       语言
@@ -381,10 +383,12 @@
           
           
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-1" type="checkbox" id="nav-2-1">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-1" type="checkbox" id="nav-2-1" checked>
     
     <label class="md-nav__link" for="nav-2-1">
       C++
@@ -404,7 +408,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../language/C%2B%2B/lrvalue/" class="md-nav__link">
+    <a href="../lrvalue/" class="md-nav__link">
       左值 & 右值
     </a>
   </li>
@@ -416,7 +420,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../language/C%2B%2B/wdg/" class="md-nav__link">
+    <a href="../wdg/" class="md-nav__link">
       尾递归
     </a>
   </li>
@@ -426,11 +430,131 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="../../../language/C%2B%2B/pointer/" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        指针
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    <a href="./" class="md-nav__link md-nav__link--active">
       指针
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    指针的强制类型转换
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    指针与数组
+  </a>
+  
+    <nav class="md-nav" aria-label="指针与数组">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    一维数组
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    二维数组
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    多级指针
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#void" class="md-nav__link">
+    void 指针
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    常量指针 &amp; 指针常量
+  </a>
+  
+    <nav class="md-nav" aria-label="常量指针 &amp; 指针常量">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    常量指针
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    指针常量
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    指向常量的指针常量
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    指针与引用
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -608,12 +732,10 @@
       
       
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+  <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" checked>
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
     
     <label class="md-nav__link" for="nav-4">
       算法
@@ -654,7 +776,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../mj/mjpl/" class="md-nav__link">
+    <a href="../../../algo/mj/mjpl/" class="md-nav__link">
       枚举排列
     </a>
   </li>
@@ -666,7 +788,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../mj/mjzj/" class="md-nav__link">
+    <a href="../../../algo/mj/mjzj/" class="md-nav__link">
       枚举子集
     </a>
   </li>
@@ -704,7 +826,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../sort/quick/" class="md-nav__link">
+    <a href="../../../algo/sort/quick/" class="md-nav__link">
       快速排序
     </a>
   </li>
@@ -719,12 +841,10 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+  <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-3" type="checkbox" id="nav-4-3" checked>
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-3" type="checkbox" id="nav-4-3">
     
     <label class="md-nav__link" for="nav-4-3">
       搜索
@@ -742,63 +862,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-      
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="__toc">
-        剪枝
-        <span class="md-nav__icon md-icon"></span>
-      </label>
-    
-    <a href="./" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../../../algo/search/cut/" class="md-nav__link">
       剪枝
     </a>
-    
-      
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    记忆化搜索
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    可行性剪枝
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    最优化剪枝
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-    
   </li>
 
         
@@ -834,7 +902,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../dp/core/" class="md-nav__link">
+    <a href="../../../algo/dp/core/" class="md-nav__link">
       DP 核心
     </a>
   </li>
@@ -867,7 +935,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../dp/pack/0-1/" class="md-nav__link">
+    <a href="../../../algo/dp/pack/0-1/" class="md-nav__link">
       0-1 背包
     </a>
   </li>
@@ -879,7 +947,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../dp/pack/wq/" class="md-nav__link">
+    <a href="../../../algo/dp/pack/wq/" class="md-nav__link">
       完全背包
     </a>
   </li>
@@ -891,7 +959,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../dp/pack/dc/" class="md-nav__link">
+    <a href="../../../algo/dp/pack/dc/" class="md-nav__link">
       多重背包
     </a>
   </li>
@@ -903,7 +971,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../dp/pack/hh/" class="md-nav__link">
+    <a href="../../../algo/dp/pack/hh/" class="md-nav__link">
       混合背包
     </a>
   </li>
@@ -915,7 +983,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../dp/pack/ew/" class="md-nav__link">
+    <a href="../../../algo/dp/pack/ew/" class="md-nav__link">
       二维费用背包
     </a>
   </li>
@@ -927,7 +995,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../dp/pack/fz/" class="md-nav__link">
+    <a href="../../../algo/dp/pack/fz/" class="md-nav__link">
       分组背包
     </a>
   </li>
@@ -944,7 +1012,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../dp/tree/" class="md-nav__link">
+    <a href="../../../algo/dp/tree/" class="md-nav__link">
       树形 DP
     </a>
   </li>
@@ -982,7 +1050,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../graph/save/" class="md-nav__link">
+    <a href="../../../algo/graph/save/" class="md-nav__link">
       图的存储
     </a>
   </li>
@@ -994,7 +1062,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../graph/topo/" class="md-nav__link">
+    <a href="../../../algo/graph/topo/" class="md-nav__link">
       拓扑排序
     </a>
   </li>
@@ -1006,7 +1074,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../graph/zdl/" class="md-nav__link">
+    <a href="../../../algo/graph/zdl/" class="md-nav__link">
       最短路
     </a>
   </li>
@@ -1018,7 +1086,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../graph/zxscs/" class="md-nav__link">
+    <a href="../../../algo/graph/zxscs/" class="md-nav__link">
       最小生成树
     </a>
   </li>
@@ -1333,21 +1401,89 @@
       
         <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
-    记忆化搜索
+    指针的强制类型转换
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
-    可行性剪枝
+    指针与数组
+  </a>
+  
+    <nav class="md-nav" aria-label="指针与数组">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    一维数组
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    二维数组
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    多级指针
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    最优化剪枝
+  <a href="#void" class="md-nav__link">
+    void 指针
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    常量指针 &amp; 指针常量
+  </a>
+  
+    <nav class="md-nav" aria-label="常量指针 &amp; 指针常量">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    常量指针
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    指针常量
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    指向常量的指针常量
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    指针与引用
   </a>
   
 </li>
@@ -1364,15 +1500,56 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/Stardusten/coding-notes/edit/master/docs/algo/search/cut.md" title="编辑此页" class="md-content__button md-icon">
+                  <a href="https://github.com/Stardusten/coding-notes/edit/master/docs/language/C++/pointer.md" title="编辑此页" class="md-content__button md-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
                   </a>
                 
                 
-                <h1 id="_1">剪枝<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
-<h2 id="_2">记忆化搜索<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<h2 id="_3">可行性剪枝<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
-<h2 id="_4">最优化剪枝<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+                <h1 id="_1">指针<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<h2 id="_2">指针的强制类型转换<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">float</span> <span class="n">a</span><span class="o">=</span><span class="mf">1.0</span><span class="p">;</span> <span class="c1">// float 占 4 byte</span>
+<span class="kt">short</span> <span class="n">b</span><span class="o">=*</span><span class="p">(</span><span class="kt">short</span><span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">a</span><span class="p">;</span> <span class="c1">// short 占 2 byte</span>
+</code></pre></div>
+</td></tr></table>
+<code>&amp;a</code> 取得 <code>a</code> 的首地址</p>
+<p><code>(short*)&amp;a</code> 告诉编译器 <code>&amp;a</code> 这个地址存的是 <code>short</code> 型变量，应该按 <code>short</code> 的长度、编码方式去解释</p>
+<p>最后 <code>*(short*)&amp;a</code> 解引用，编译器按照 <code>short</code> 占 2 byte 取出前两个 byte 按 <code>short</code> 的编码方式去解释，并将解释所得的值给 <code>b</code></p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">short</span> <span class="n">c</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
+<span class="kt">float</span> <span class="n">d</span><span class="o">=*</span><span class="p">(</span><span class="kt">float</span><span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">c</span><span class="p">;</span>
+</code></pre></div>
+</td></tr></table>
+<p>与上面类似，<code>&amp;c</code> 取得 <code>c</code> 的首地址</p>
+<p><code>(float*)&amp;c</code> 告诉编译器 <code>&amp;c</code> 这个地址存的是 <code>float</code> 型变量，应该按 <code>float</code> 的长度、编码方式去解释</p>
+<p>最后 <code>*(float*)&amp;c</code> 解引用，编译器按照 <code>float</code> 占 4 byte 取出前四个 byte 按 <code>float</code> 的编码方式去解释，并将解释所得的值给 <code>d</code></p>
+<p>但是 <code>c</code> 是 <code>short</code> 类型，只占 2 byte，而上述操作访问了后面相邻的两个字节，这时就发生了 <strong>内存访问越界</strong></p>
+<p>只是访问后面的内存，还问题不大；但如果对后面的内存进行修改，就很容易造成严重错误，因为后面的内存很可能是别的变量的存储位置</p>
+<h2 id="_3">指针与数组<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<h3 id="_4">一维数组<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<h3 id="_5">二维数组<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p>二维数组每个元素都是一个一维数组</p>
+<p>二维数组名是指向 <strong>第一行元素</strong> 的指针，解引用后得到 <strong>一个一维数组</strong></p>
+<p>二维数组作为函数形参时，需要 <strong>传入第二维大小</strong>，否则只能 <strong>作为指针传入，再手动寻址</strong></p>
+<p>取得一整行元素后，再做指针运算就是 <strong>移动列</strong> 了</p>
+<h2 id="_6">多级指针<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<p><code>int *****a</code> 这个指针存的到底是什么呢？</p>
+<p>首先明确，不管多少级指针，其本质还是一个 <strong>指针变量</strong> ，而我们用 <code>*a</code> 表示变量 <code>a</code> 是指针变量</p>
+<p>我们从 <code>int *****a</code> 中划走 <code>*a</code> ，剩下的 <code>int ****</code> 就表示这个指针存放的是 <code>int****</code> 类型变量的地址</p>
+<h2 id="void">void 指针<a class="headerlink" href="#void" title="Permanent link">&para;</a></h2>
+<h2 id="_7">常量指针 &amp; 指针常量<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<p>“常量” 在哪里，<code>const</code> 就在那里</p>
+<h3 id="_8">常量指针<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<p><code>const int* a</code> ：指向常量的指针，指针所指地址可以变，但所指地址存的东西不能变</p>
+<h3 id="_9">指针常量<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<p><code>int* const a</code> ：指针类型的常量，指针所指地址不能变，但所指地址存的东西可以变</p>
+<h3 id="_10">指向常量的指针常量<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<p><code>const int* const a</code> 所指地址，和所指地址存的东西都不能变</p>
+<h2 id="_11">指针与引用<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
+<div class="admonition quote">
+<p>参考：</p>
+<p><a href="https://juejin.im/post/6892199770106888199#heading-10">掘金：C语言重点——指针篇（一文让你完全搞懂指针）| 从内存理解指针 | 指针完全解析</a></p>
+</div>
                 
               
               
@@ -1407,7 +1584,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
         
-          <a href="../../sort/quick/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../wdg/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-footer-nav__button md-icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
             </div>
@@ -1416,19 +1593,19 @@
                 <span class="md-footer-nav__direction">
                   上一页
                 </span>
-                快速排序
+                尾递归
               </div>
             </div>
           </a>
         
         
-          <a href="../../dp/core/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../../../ds/stack/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-footer-nav__title">
               <div class="md-ellipsis">
                 <span class="md-footer-nav__direction">
                   下一页
                 </span>
-                DP 核心
+                栈
               </div>
             </div>
             <div class="md-footer-nav__button md-icon">

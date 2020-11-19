@@ -1619,12 +1619,14 @@
 <p>对数组名取地址会得到一个 <strong>指向数组首地址的常量指针</strong>，并且这个指针的 <strong>偏移量等于数组所占内存大小</strong>，也就是 <code>&amp;str</code> 会得到一个类型为 <code>const char(*)[sizeof(str)]</code> 的指针</p>
 </li>
 </ol>
-<p>也可以认为，数组名并不是一个实体的变量，没有被分配的内存，只是依附于数组的一些信息，和数组捆绑存储，这样，对数组名取地址得到的自然还是数组的首地址</p>
+<dl>
+<dd>也可以认为，数组名并不是一个实体的变量，没有被分配的内存，只是依附于数组的一些信息，和数组捆绑存储，这样，对数组名取地址得到的自然还是数组的首地址</dd>
+</dl>
 <ol>
 <li>你可以修改指针指向的地址，但你不能修改数组名的指向</li>
 </ol>
 <h3 id="_8">数组名退化为指针<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
-<p>众所周知，在数组名作为参数传给函数时，数组名会退化为指针。因为用来接收数组名的形参是指针，而指针只能存一个地址，而不能存数组大小等信息，因此会发生信息的丢失，也就是我们说的 <strong>退化</strong></p>
+<p>众所周知，在数组名作为参数传给函数时，数组名会退化为指针。因为用来接收数组名的形参是指针，而指针只能存一个地址，而不能存数组大小等信息，因此会发生信息的丢失，也就是我们说的 <strong>数组名退化</strong></p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
@@ -1648,7 +1650,7 @@
 <span class="p">}</span>
 </code></pre></div>
 </td></tr></table>
-<p>通过这个程序我们可以看到，<code>arr</code> 和 <code>a</code> 都存储了数组的首地址 <code>0xee01a8d0</code>，而 <code>a</code> 的地址 <code>&amp;a</code> 不同于数组首地址，这说明编辑器新建了一个指针变量，并将数组首地址存进去了，实际上，这一过程就是我们常说的**传值传参**</p>
+<p>通过这个程序我们可以看到，<code>arr</code> 和 <code>a</code> 都存储了数组的首地址 <code>0xee01a8d0</code>，而 <code>a</code> 的地址 <code>&amp;a</code> 不同于数组首地址，这说明编辑器新建了一个指针变量，并将数组首地址存进去了，实际上，这一过程就是我们常说的 <strong>传值传参</strong></p>
 <p>既然问题出在传参上，那我们常用的防止拷贝复制的传参方式 <strong>传引用</strong> ，能不能用在这里防止数组名退化呢？</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2

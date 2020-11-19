@@ -18,18 +18,14 @@
 
 body {
     font-family: 'Fira Code''Fira';
-    /*background-image:url('bg.png');
+    background-image:url('bg.png');
     background-repeat:no-repeat;
     background-attachment:fixed;
     background-position:bottom right;
-    background-size: 232.75px 297.75px;*/
+    background-size: 232.75px 297.75px;
 }
-
-
 
 .md-typeset code {
     font-family: 'Fira Code';
-    font-size: normal;
-    font-weight:normal;
-    background-color: #f2f2f2f2;
+    padding: 1px 3px 1px 3px;
 }

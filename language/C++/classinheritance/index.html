@@ -478,6 +478,13 @@
       
         <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
+    虚函数
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
     抽象基类
   </a>
   
@@ -485,7 +492,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     纯虚函数
   </a>
   
@@ -1360,6 +1367,13 @@
       
         <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
+    虚函数
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
     抽象基类
   </a>
   
@@ -1367,7 +1381,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     纯虚函数
   </a>
   
@@ -1401,9 +1415,44 @@
 <h2 id="_3">基类指针、引用的兼容性<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <p>基类指针指向派生类对象</p>
 <p>基类引用可以引用派生类对象</p>
-<h2 id="_4">抽象基类<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p>但注意：基类指针只能调用基类方法，派生类指针既能调用基类方法，也能调用派生类方法</p>
+<p>所以派生类指针指向基类对象是不合法的，因为可以通过派生类指针调用派生类方法，而基类没有派生类方法</p>
+<h2 id="_4">虚函数<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p>关键字：<code>virtual</code></p>
+<p>虚函数的使用有以下注意事项：</p>
+<ol>
+<li>
+<p><strong>通过引用或指针调用方法时</strong>，如果使用 <code>virtual</code> ，程序将根据引用或指针 <strong>指向的对象</strong> 选择方法（动态联编）；否则将根据 <strong>引用或指针本身的类型</strong> 来选择方法（静态联编）</p>
+</li>
+<li>
+<p><code>virtual</code> 关键字只用于类方法的函数原型中，函数定义中无需（也不能）再包含 <code>virtual</code> 关键字</p>
+</li>
+<li>
+<p>如果一个方法 <strong>在派生类中会被重新定义</strong>，则该方法应声明为虚方法</p>
+</li>
+<li>
+<p>基类方法声明中使用 <code>virtual</code> 会使该方法在 <strong>基类及其所有派生类</strong> 中都是虚的</p>
+</li>
+<li>
+<p>构造函数不能是虚函数</p>
+</li>
+<li>
+<p>析构函数应当为虚函数</p>
+</li>
+<li>
+<p>如果重新定义继承的方法，应确保与原来的原型完全相同</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>如果返回类型是 <strong>基类引用或指针</strong>，则可以修改为 <strong>派生类引用或指针</strong>，这种特性被称为 <strong>返回类型协变</strong></p>
+</div>
+</li>
+<li>
+<p>如果基类声明被重载了，则应在派生类中 <strong>重新定义所有基类版本</strong></p>
+</li>
+</ol>
+<h2 id="_5">抽象基类<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
 <p>带有 <a href="#纯虚函数">纯虚函数</a> 的类称为抽象基类</p>
-<h3 id="_5">纯虚函数<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<h3 id="_6">纯虚函数<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <p>结尾处加上 <code>=0</code> 的虚函数是纯虚函数，在抽象基类中可以只声明不定义（也就是可以没有函数体）</p>
 <p>纯虚函数的声明格式如下：</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">virtual</span> <span class="err">返回值类型</span> <span class="err">函数名</span><span class="p">(</span><span class="err">参数列表</span><span class="p">)</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>

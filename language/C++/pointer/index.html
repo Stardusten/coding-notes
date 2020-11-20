@@ -1591,13 +1591,13 @@
 <p>指一类存储 <strong>内存地址</strong> 的变量</p>
 <h2 id="_2">指针的基类型<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <p>告诉编译器指针指向的 <strong>内存块大小</strong> 和 <strong>编码方式</strong></p>
-<p>一般存的数据是什么类型，基类型标识符就是什么类型</p>
+<p>一般存的数据是什么类型，基类型就是什么类型</p>
 <p>比如：</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="n">val</span><span class="o">=</span><span class="mi">65</span><span class="p">;</span>
 <span class="kt">int</span> <span class="o">*</span> <span class="n">p</span><span class="o">=&amp;</span><span class="n">val</span><span class="p">;</span> <span class="c1">// p 存的是 val 所在的内存块第一个字节的地址</span>
-<span class="c1">// int 标识符告诉编译器：解引用时，按 int 大小往后取 4 字节并按 int 的编码方式翻译</span>
+<span class="c1">// int 告诉编译器：解引用时，按 int 大小往后取 4 字节并按 int 的编码方式翻译</span>
 </code></pre></div>
 </td></tr></table>
 <h2 id="_3">指针算术<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>

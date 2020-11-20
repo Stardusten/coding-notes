@@ -16,7 +16,7 @@
     
     
       
-        <title>二维数组 - My Coding Notes</title>
+        <title>类继承 - My Coding Notes</title>
       
     
     
@@ -98,7 +98,7 @@
           </span>
           <span class="md-header-nav__topic md-ellipsis">
             
-              二维数组
+              类继承
             
           </span>
         </div>
@@ -158,7 +158,9 @@
         
           
 
-<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  
+
+<nav class="md-tabs md-tabs--active" aria-label="Tabs" data-md-component="tabs">
   <div class="md-tabs__inner md-grid">
     <ul class="md-tabs__list">
       
@@ -184,7 +186,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="../lrvalue/" class="md-tabs__link">
+        <a href="../wdg/" class="md-tabs__link md-tabs__link--active">
           语言
         </a>
       
@@ -358,10 +360,12 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
     
     <label class="md-nav__link" for="nav-2">
       语言
@@ -379,10 +383,12 @@
           
           
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-1" type="checkbox" id="nav-2-1">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-1" type="checkbox" id="nav-2-1" checked>
     
     <label class="md-nav__link" for="nav-2-1">
       C++
@@ -395,18 +401,6 @@
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../lrvalue/" class="md-nav__link">
-      左值 & 右值
-    </a>
-  </li>
-
         
           
           
@@ -429,6 +423,83 @@
     <a href="../pointer/" class="md-nav__link">
       指针
     </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        类继承
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    <a href="./" class="md-nav__link md-nav__link--active">
+      类继承
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    访问控制
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    基类指针、引用的兼容性
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    抽象基类
+  </a>
+  
+    <nav class="md-nav" aria-label="抽象基类">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    纯虚函数
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -1267,6 +1338,48 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    访问控制
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    基类指针、引用的兼容性
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    抽象基类
+  </a>
+  
+    <nav class="md-nav" aria-label="抽象基类">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    纯虚函数
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1277,16 +1390,46 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/Stardusten/coding-notes/edit/master/docs/language/C++/ewsz.md" title="编辑此页" class="md-content__button md-icon">
+                  <a href="https://github.com/Stardusten/coding-notes/edit/master/docs/language/C++/classinheritance.md" title="编辑此页" class="md-content__button md-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
                   </a>
                 
                 
-                <h1 id="_1">二维数组<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
-<p>二维数组每个元素都是一个一维数组</p>
-<p>二维数组名是指向 <strong>第一行元素</strong> 的指针，解引用后得到 <strong>一个一维数组</strong></p>
-<p>二维数组作为函数形参时，需要 <strong>传入第二维大小</strong>，否则只能 <strong>作为指针传入，再手动寻址</strong></p>
-<p>取得一整行元素后再加减就是移动列了</p>
+                <h1 id="_1">类继承<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<h2 id="_2">访问控制<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p><code>protected</code> 派生类的成员能直接访问保护成员</p>
+<h2 id="_3">基类指针、引用的兼容性<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>基类指针指向派生类对象</p>
+<p>基类引用可以引用派生类对象</p>
+<h2 id="_4">抽象基类<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p>带有 <a href="#纯虚函数">纯虚函数</a> 的类称为抽象基类</p>
+<h3 id="_5">纯虚函数<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p>结尾处加上 <code>=0</code> 的虚函数是纯虚函数，在抽象基类中可以只声明不定义（也就是可以没有函数体）</p>
+<p>纯虚函数的声明格式如下：</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">virtual</span> <span class="err">返回值类型</span> <span class="err">函数名</span><span class="p">(</span><span class="err">参数列表</span><span class="p">)</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+</code></pre></div>
+</td></tr></table>
+<p>纯虚函数虽然在抽象基类中没有定义，但在由抽象基类派生出的类中必须被定义，这样做有两个好处：</p>
+<ol>
+<li>
+<p>纯虚函数是一种 <strong>必须实现的接口</strong>，迫使所有由这个抽象基类派生出的类，都必须遵循抽象基类设定的接口规则，这样确保了从抽象基类派生出的类都至少支持抽象基类指定的功能 <sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup></p>
+</li>
+<li>
+<p>各派生类可以根据实际需要定义自己的版本</p>
+</li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>抽象基类只能作为基类使用，不能创建抽象类对象</p>
+</div>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>C++ Primer Plus P516&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
                 
               
               
@@ -1317,6 +1460,41 @@
       
         
 <footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../pointer/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  上一页
+                </span>
+                指针
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../../../ds/stack/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  下一页
+                </span>
+                栈
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">

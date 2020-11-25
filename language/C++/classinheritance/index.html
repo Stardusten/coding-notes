@@ -503,6 +503,20 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    继承与动态内存分配
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    派生类与友元
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1273,6 +1287,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../tools/git/" class="md-nav__link">
+      Git
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -1392,6 +1418,20 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    继承与动态内存分配
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    派生类与友元
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1461,7 +1501,7 @@
 <p>纯虚函数虽然在抽象基类中没有定义，但在由抽象基类派生出的类中必须被定义，这样做有两个好处：</p>
 <ol>
 <li>
-<p>纯虚函数是一种 <strong>必须实现的接口</strong>，迫使所有由这个抽象基类派生出的类，都必须遵循抽象基类设定的接口规则，这样确保了从抽象基类派生出的类都至少支持抽象基类指定的功能 <sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup></p>
+<p>纯虚函数是一种 <strong>必须实现的接口</strong>，迫使所有由这个抽象基类派生出的类，都必须遵循抽象基类设定的接口规则，这样确保了从抽象基类派生出的类都至少支持抽象基类指定的功能</p>
 </li>
 <li>
 <p>各派生类可以根据实际需要定义自己的版本</p>
@@ -1471,14 +1511,32 @@
 <p class="admonition-title">Warning</p>
 <p>抽象基类只能作为基类使用，不能创建抽象类对象</p>
 </div>
-<div class="footnote">
-<hr />
+<h2 id="_7">继承与动态内存分配<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<p>当基类和派生类都采用动态内存分配时，派生类的析构函数、复制构造函数、赋值运算符都必须使用相应的 <strong>基类方法来处理基类元素</strong></p>
 <ol>
-<li id="fn:1">
-<p>C++ Primer Plus P516&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+<li>
+<p>对于析构函数，这是 <strong>自动完成</strong> 的</p>
+</li>
+<li>
+<p>对于构造函数，这是通过 <strong>初始化成员列表</strong> 中调用基类的复制构造函数完成的</p>
+</li>
+<li>
+<p>对于赋值运算符，这是通过 <strong>使用作用域解析运算符</strong> 显示调用基类的赋值运算符实现的，注意调用方式：</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1">// 原型:</span>
+<span class="n">base</span> <span class="o">&amp;</span> <span class="n">base</span><span class="o">::</span><span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">base</span> <span class="o">&amp;</span><span class="p">);</span>
+<span class="c1">// 调用:</span>
+<span class="n">base</span><span class="o">::</span><span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="n">h</span><span class="p">);</span> <span class="c1">// h 是派生类对象</span>
+<span class="c1">// 利用了性质：基类引用可以引用派生类对象</span>
+</code></pre></div>
+</td></tr></table>
 </li>
 </ol>
-</div>
+<h2 id="_8">派生类与友元<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<p>由于友元不是成员函数，所以不能使用域解析运算符指定使用哪个函数，而是使用 <strong>强制类型转换</strong> 匹配，所以友元函数不声明为虚</p>
                 
               
               

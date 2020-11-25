@@ -684,6 +684,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    模板类封装模板
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1294,6 +1301,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../tools/git/" class="md-nav__link">
+      Git
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -1430,6 +1449,13 @@
         <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     求排名
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    模板类封装模板
   </a>
   
 </li>
@@ -1657,6 +1683,241 @@
     <span class="c1">// 注意是 val-1 才能保证得到的 a treap 都小于 _val</span>
     <span class="kt">int</span> <span class="n">tmp</span><span class="o">=</span><span class="p">(</span><span class="n">a</span><span class="o">==</span><span class="k">nullptr</span> <span class="o">?</span> <span class="mi">1</span> <span class="o">:</span> <span class="n">a</span><span class="o">-&gt;</span><span class="n">siz</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span>
     <span class="n">root</span><span class="o">=</span><span class="n">merge</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">tmp</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+<h2 id="_5">模板类封装模板<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<p>用于八数码 A* 算法的模板</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>  1
+  2
+  3
+  4
+  5
+  6
+  7
+  8
+  9
+ 10
+ 11
+ 12
+ 13
+ 14
+ 15
+ 16
+ 17
+ 18
+ 19
+ 20
+ 21
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59
+ 60
+ 61
+ 62
+ 63
+ 64
+ 65
+ 66
+ 67
+ 68
+ 69
+ 70
+ 71
+ 72
+ 73
+ 74
+ 75
+ 76
+ 77
+ 78
+ 79
+ 80
+ 81
+ 82
+ 83
+ 84
+ 85
+ 86
+ 87
+ 88
+ 89
+ 90
+ 91
+ 92
+ 93
+ 94
+ 95
+ 96
+ 97
+ 98
+ 99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1">// 需要重载 ==、&lt;、&gt;、&lt;=、&gt;=</span>
+<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="nc">T</span><span class="o">&gt;</span>
+<span class="k">struct</span> <span class="nc">node</span><span class="p">{</span>
+    <span class="n">T</span> <span class="n">val</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">rnd</span><span class="p">,</span><span class="n">siz</span><span class="p">;</span>
+    <span class="n">node</span><span class="o">*</span> <span class="n">lc</span><span class="p">;</span>
+    <span class="n">node</span><span class="o">*</span> <span class="n">rc</span><span class="p">;</span>
+    <span class="n">node</span><span class="p">(</span><span class="n">T</span> <span class="n">_val</span><span class="o">=</span><span class="mi">0</span><span class="p">){</span>
+        <span class="n">val</span><span class="o">=</span><span class="n">_val</span><span class="p">;</span>
+        <span class="n">rnd</span><span class="o">=</span><span class="n">rand</span><span class="p">()</span><span class="o">&amp;</span><span class="mi">32767</span><span class="p">;</span>
+        <span class="n">siz</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
+        <span class="n">lc</span><span class="o">=</span><span class="n">rc</span><span class="o">=</span><span class="k">nullptr</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kt">void</span> <span class="n">update_siz</span><span class="p">();</span>
+<span class="p">};</span>
+
+<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="nc">T</span><span class="o">&gt;</span>
+<span class="k">class</span> <span class="nc">fhq_treap</span><span class="p">{</span>
+<span class="k">private</span><span class="o">:</span>
+    <span class="n">node</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;*</span> <span class="n">root</span><span class="p">;</span>
+    <span class="kt">void</span> <span class="nf">split</span><span class="p">(</span><span class="n">node</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;*</span><span class="p">,</span><span class="n">node</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;*&amp;</span><span class="p">,</span><span class="n">node</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;*&amp;</span><span class="p">,</span><span class="n">T</span><span class="p">);</span>
+    <span class="n">node</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;*&amp;</span> <span class="n">merge</span><span class="p">(</span><span class="n">node</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;*&amp;</span><span class="p">,</span><span class="n">node</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;*&amp;</span><span class="p">);</span>
+    <span class="n">node</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;*</span> <span class="n">kth</span><span class="p">(</span><span class="n">node</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;*</span><span class="p">,</span><span class="kt">int</span> <span class="n">k</span><span class="p">);</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="n">fhq_treap</span><span class="p">()</span><span class="o">:</span><span class="n">root</span><span class="p">(</span><span class="k">nullptr</span><span class="p">){}</span>
+    <span class="kt">void</span> <span class="n">insert</span><span class="p">(</span><span class="k">const</span> <span class="n">T</span><span class="o">&amp;</span><span class="p">);</span>
+    <span class="n">node</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;*</span> <span class="n">get_min_and_del</span><span class="p">();</span>
+    <span class="kt">bool</span> <span class="nf">exist</span><span class="p">();</span>
+<span class="p">};</span>
+
+<span class="k">struct</span> <span class="nc">state</span><span class="p">{</span>
+    <span class="kt">int</span> <span class="n">s</span><span class="p">[</span><span class="mi">9</span><span class="p">];</span>
+    <span class="kt">int</span> <span class="n">f</span><span class="p">,</span><span class="n">g</span><span class="p">,</span><span class="n">h</span><span class="p">;</span>
+    <span class="kt">void</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">state</span><span class="o">&amp;</span><span class="p">);</span>
+    <span class="k">friend</span> <span class="kt">bool</span> <span class="k">operator</span><span class="o">==</span><span class="p">(</span><span class="k">const</span> <span class="n">state</span><span class="o">&amp;</span><span class="p">,</span><span class="k">const</span> <span class="n">state</span><span class="o">&amp;</span><span class="p">);</span>
+    <span class="k">friend</span> <span class="kt">bool</span> <span class="k">operator</span><span class="o">&lt;</span><span class="p">(</span><span class="k">const</span> <span class="n">state</span><span class="o">&amp;</span><span class="p">,</span><span class="k">const</span> <span class="n">state</span><span class="o">&amp;</span><span class="p">);</span>
+    <span class="k">friend</span> <span class="kt">bool</span> <span class="k">operator</span><span class="o">&lt;=</span><span class="p">(</span><span class="k">const</span> <span class="n">state</span><span class="o">&amp;</span><span class="p">,</span><span class="k">const</span> <span class="n">state</span><span class="o">&amp;</span><span class="p">);</span>
+    <span class="k">friend</span> <span class="kt">bool</span> <span class="k">operator</span><span class="o">&gt;</span><span class="p">(</span><span class="k">const</span> <span class="n">state</span><span class="o">&amp;</span><span class="p">,</span><span class="k">const</span> <span class="n">state</span><span class="o">&amp;</span><span class="p">);</span>
+    <span class="k">friend</span> <span class="kt">bool</span> <span class="k">operator</span><span class="o">&gt;=</span><span class="p">(</span><span class="k">const</span> <span class="n">state</span><span class="o">&amp;</span><span class="p">,</span><span class="k">const</span> <span class="n">state</span><span class="o">&amp;</span><span class="p">);</span>
+<span class="p">};</span>
+
+<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="nc">T</span><span class="o">&gt;</span>
+<span class="kt">void</span> <span class="n">node</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">update_siz</span><span class="p">(){</span>
+    <span class="n">siz</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">lc</span><span class="o">!=</span><span class="k">nullptr</span><span class="p">)</span> <span class="n">siz</span><span class="o">+=</span><span class="n">lc</span><span class="o">-&gt;</span><span class="n">siz</span><span class="p">;</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">rc</span><span class="o">!=</span><span class="k">nullptr</span><span class="p">)</span> <span class="n">siz</span><span class="o">+=</span><span class="n">rc</span><span class="o">-&gt;</span><span class="n">siz</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="nc">T</span><span class="o">&gt;</span>
+<span class="kt">void</span> <span class="n">fhq_treap</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">split</span><span class="p">(</span><span class="n">node</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;*</span> <span class="n">root</span><span class="p">,</span><span class="n">node</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;*&amp;</span> <span class="n">a</span><span class="p">,</span><span class="n">node</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;*&amp;</span><span class="n">b</span><span class="p">,</span><span class="n">T</span> <span class="n">pivot</span><span class="p">){</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">root</span><span class="o">==</span><span class="k">nullptr</span><span class="p">)</span> <span class="k">return</span> <span class="n">a</span><span class="o">=</span><span class="n">b</span><span class="o">=</span><span class="k">nullptr</span><span class="p">,</span><span class="kt">void</span><span class="p">();</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">val</span><span class="o">&lt;=</span><span class="n">pivot</span><span class="p">){</span>
+        <span class="n">a</span><span class="o">=</span><span class="n">root</span><span class="p">;</span>
+        <span class="n">split</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">rc</span><span class="p">,</span><span class="n">a</span><span class="o">-&gt;</span><span class="n">rc</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">pivot</span><span class="p">);</span>
+    <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+        <span class="n">b</span><span class="o">=</span><span class="n">root</span><span class="p">;</span>
+        <span class="n">split</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">lc</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="o">-&gt;</span><span class="n">lc</span><span class="p">,</span><span class="n">pivot</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="n">root</span><span class="o">-&gt;</span><span class="n">update_siz</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="nc">T</span><span class="o">&gt;</span>
+<span class="n">node</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;*&amp;</span> <span class="n">fhq_treap</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">merge</span><span class="p">(</span><span class="n">node</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;*&amp;</span> <span class="n">a</span><span class="p">,</span><span class="n">node</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;*&amp;</span><span class="n">b</span><span class="p">){</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">a</span><span class="o">==</span><span class="k">nullptr</span><span class="p">)</span> <span class="k">return</span> <span class="n">b</span><span class="p">;</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">b</span><span class="o">==</span><span class="k">nullptr</span><span class="p">)</span> <span class="k">return</span> <span class="n">a</span><span class="p">;</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">a</span><span class="o">-&gt;</span><span class="n">rnd</span><span class="o">&lt;=</span><span class="n">b</span><span class="o">-&gt;</span><span class="n">rnd</span><span class="p">){</span>
+        <span class="n">a</span><span class="o">-&gt;</span><span class="n">rc</span><span class="o">=</span><span class="n">merge</span><span class="p">(</span><span class="n">a</span><span class="o">-&gt;</span><span class="n">rc</span><span class="p">,</span><span class="n">b</span><span class="p">);</span>
+        <span class="n">a</span><span class="o">-&gt;</span><span class="n">update_siz</span><span class="p">();</span>
+        <span class="k">return</span> <span class="n">a</span><span class="p">;</span>
+    <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+        <span class="n">b</span><span class="o">-&gt;</span><span class="n">lc</span><span class="o">=</span><span class="n">merge</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="o">-&gt;</span><span class="n">lc</span><span class="p">);</span>
+        <span class="n">b</span><span class="o">-&gt;</span><span class="n">update_siz</span><span class="p">();</span>
+        <span class="k">return</span> <span class="n">b</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="nc">T</span><span class="o">&gt;</span>
+<span class="n">node</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;*</span> <span class="n">fhq_treap</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">kth</span><span class="p">(</span><span class="n">node</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;*</span> <span class="n">_root</span><span class="p">,</span><span class="kt">int</span> <span class="n">k</span><span class="p">){</span>
+    <span class="n">assert</span><span class="p">(</span><span class="n">_root</span><span class="o">!=</span><span class="k">nullptr</span><span class="p">);</span> <span class="c1">// 断言</span>
+    <span class="kt">int</span> <span class="n">lc_siz</span><span class="o">=</span><span class="p">(</span><span class="n">_root</span><span class="o">-&gt;</span><span class="n">lc</span><span class="o">==</span><span class="k">nullptr</span> <span class="o">?</span> <span class="mi">0</span> <span class="o">:</span> <span class="n">_root</span><span class="o">-&gt;</span><span class="n">lc</span><span class="o">-&gt;</span><span class="n">siz</span><span class="p">);</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">lc_siz</span><span class="o">&gt;=</span><span class="n">k</span><span class="p">)</span> <span class="k">return</span> <span class="n">kth</span><span class="p">(</span><span class="n">_root</span><span class="o">-&gt;</span><span class="n">lc</span><span class="p">,</span><span class="n">k</span><span class="p">);</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">lc_siz</span><span class="o">+</span><span class="mi">1</span><span class="o">&lt;</span><span class="n">k</span><span class="p">)</span> <span class="k">return</span> <span class="n">kth</span><span class="p">(</span><span class="n">_root</span><span class="o">-&gt;</span><span class="n">rc</span><span class="p">,</span><span class="n">k</span><span class="o">-</span><span class="n">lc_siz</span><span class="mi">-1</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">_root</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="nc">T</span><span class="o">&gt;</span>
+<span class="kt">void</span> <span class="n">fhq_treap</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">insert</span><span class="p">(</span><span class="k">const</span> <span class="n">T</span><span class="o">&amp;</span> <span class="n">_val</span><span class="p">){</span>
+    <span class="n">node</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;*</span> <span class="n">a</span><span class="o">=</span><span class="k">nullptr</span><span class="p">;</span>
+    <span class="n">node</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;*</span> <span class="n">b</span><span class="o">=</span><span class="k">nullptr</span><span class="p">;</span>
+    <span class="n">node</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;*</span> <span class="n">n</span><span class="o">=</span><span class="k">nullptr</span><span class="p">;</span>
+    <span class="n">split</span><span class="p">(</span><span class="n">root</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">_val</span><span class="p">);</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">a</span><span class="o">!=</span><span class="k">nullptr</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="n">kth</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">a</span><span class="o">-&gt;</span><span class="n">siz</span><span class="p">))</span><span class="o">-&gt;</span><span class="n">val</span><span class="o">==</span><span class="n">_val</span><span class="p">){</span>
+        <span class="c1">// exist;</span>
+        <span class="n">root</span><span class="o">=</span><span class="n">merge</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">);</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+        <span class="n">n</span><span class="o">=</span><span class="k">new</span> <span class="n">node</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">(</span><span class="n">_val</span><span class="p">);</span>
+        <span class="n">root</span><span class="o">=</span><span class="n">merge</span><span class="p">(</span><span class="n">merge</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">n</span><span class="p">),</span><span class="n">b</span><span class="p">);</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="nc">T</span><span class="o">&gt;</span>
+<span class="n">node</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;*</span> <span class="n">fhq_treap</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">get_min_and_del</span><span class="p">(){</span>
+    <span class="n">assert</span><span class="p">(</span><span class="n">root</span><span class="o">!=</span><span class="k">nullptr</span><span class="p">);</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">lc</span><span class="o">==</span><span class="k">nullptr</span><span class="p">){</span>
+        <span class="n">node</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;*</span> <span class="n">tmp</span><span class="o">=</span><span class="n">root</span><span class="p">;</span>
+        <span class="n">root</span><span class="o">=</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">rc</span><span class="p">;</span>
+        <span class="k">return</span> <span class="n">tmp</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">node</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;*</span> <span class="n">it</span><span class="p">;</span>
+    <span class="k">for</span><span class="p">(</span><span class="n">it</span><span class="o">=</span><span class="n">root</span><span class="p">;</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">lc</span><span class="o">-&gt;</span><span class="n">lc</span><span class="o">!=</span><span class="k">nullptr</span><span class="p">;</span><span class="n">it</span><span class="o">=</span><span class="n">it</span><span class="o">-&gt;</span><span class="n">lc</span><span class="p">){}</span>
+    <span class="n">node</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;*</span> <span class="n">tmp</span><span class="o">=</span><span class="n">it</span><span class="o">-&gt;</span><span class="n">lc</span><span class="p">;</span>
+    <span class="n">it</span><span class="o">-&gt;</span><span class="n">lc</span><span class="o">=</span><span class="k">nullptr</span><span class="p">;</span>
     <span class="k">return</span> <span class="n">tmp</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>

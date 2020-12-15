@@ -29,3 +29,9 @@ body {
     font-family: 'Fira Code';
     padding: 1px 3px 1px 3px;
 }
+
+.codehilite code, .codehilite pre {
+    padding: 6px 0px 6px 12px;
+    margin-bottom: 16px;
+  }
+  

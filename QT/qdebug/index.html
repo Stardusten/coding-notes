@@ -44,8 +44,6 @@
     
       <link rel="stylesheet" href="../../stylesheets/extra.css">
     
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/default.min.css">
-    
     
       
     
@@ -759,6 +757,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../../algo/search/DFS/md" class="md-nav__link">
+      DFS
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../../algo/search/cut/" class="md-nav__link">
       剪枝
     </a>
@@ -1307,6 +1317,20 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#printf" class="md-nav__link">
+    当 printf 用
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#qdebug_1" class="md-nav__link">
+    隐藏所有 qDebug 调试信息
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1448,6 +1472,20 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#printf" class="md-nav__link">
+    当 printf 用
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#qdebug_1" class="md-nav__link">
+    隐藏所有 qDebug 调试信息
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1474,9 +1512,10 @@
 <h2 id="qdebug">QDebug<a class="headerlink" href="#qdebug" title="Permanent link">&para;</a></h2>
 <h3 id="cout">当 cout 用<a class="headerlink" href="#cout" title="Permanent link">&para;</a></h3>
 <p>可以把 <code>qDebug()</code>（注意 <strong>大小写</strong> 和 <strong>括号</strong>）当成 <code>cout</code> 用，输出到应用程序输出</p>
-<p><div class="highlight"><pre><span></span><code><span class="n">qDebug</span><span class="p">()</span><span class="o">&lt;&lt;</span><span class="n">a</span><span class="o">&lt;&lt;</span><span class="sc">&#39; &#39;</span><span class="o">&lt;&lt;</span><span class="n">b</span><span class="o">&lt;&lt;</span><span class="n">Qt</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="n">qDebug</span><span class="p">()</span><span class="o">&lt;&lt;</span><span class="n">a</span><span class="o">&lt;&lt;</span><span class="sc">&#39; &#39;</span><span class="o">&lt;&lt;</span><span class="n">b</span><span class="o">&lt;&lt;</span><span class="n">Qt</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
 </code></pre></div>
-注意:</p>
+<p>还可以 <strong>重载 &lt;&lt;</strong> 使 <code>qDebug</code> 支持打印自定义类</p>
+<p>注意:</p>
 <ol>
 <li>
 <p><code>endl</code> 要换成 <code>Qt::endl</code></p>
@@ -1485,6 +1524,23 @@
 <p>要引入头文件 <code>QDebug</code></p>
 </li>
 </ol>
+<h3 id="printf">当 printf 用<a class="headerlink" href="#printf" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">qDebu</span><span class="p">(</span><span class="s">&quot;格式化输入输出: %d %c&quot;</span><span class="p">,</span><span class="n">Int</span><span class="p">,</span><span class="n">Ch</span><span class="p">);</span>
+</code></pre></div>
+<p>注意:</p>
+<ol>
+<li>
+<p>可以不引入头文件 <code>QDebug</code></p>
+</li>
+<li>
+<p><strong>不能打印</strong> QT 支持的基本类型</p>
+</li>
+</ol>
+<h3 id="qdebug_1">隐藏所有 qDebug 调试信息<a class="headerlink" href="#qdebug_1" title="Permanent link">&para;</a></h3>
+<p>在 <code>pro</code> 文件中加上</p>
+<div class="highlight"><pre><span></span><code>DEFINES += QT_NO_DEBUG_OUTPUT
+</code></pre></div>
+<p>即可 <em>一键注释</em> 掉所有 <code>qDebug</code></p>
                 
               
               
@@ -1585,8 +1641,6 @@
         <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-      
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
       
     
   </body>

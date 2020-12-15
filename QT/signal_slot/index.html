@@ -44,8 +44,6 @@
     
       <link rel="stylesheet" href="../../stylesheets/extra.css">
     
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/default.min.css">
-    
     
       
     
@@ -759,6 +757,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../../algo/search/DFS/md" class="md-nav__link">
+      DFS
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../../algo/search/cut/" class="md-nav__link">
       剪枝
     </a>
@@ -1325,6 +1335,40 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    其他
+  </a>
+  
+    <nav class="md-nav" aria-label="其他">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#qsignalmapper" class="md-nav__link">
+    QSignalMapper
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    获取信号发送者
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    解绑定信号槽
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1455,6 +1499,40 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    其他
+  </a>
+  
+    <nav class="md-nav" aria-label="其他">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#qsignalmapper" class="md-nav__link">
+    QSignalMapper
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    获取信号发送者
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    解绑定信号槽
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1473,18 +1551,28 @@
                 
                 
                 <h1 id="_1">信号槽<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<p>发出信号 - 执行信号连接的槽函数，就这么简单</p>
+<p>注意：</p>
+<ol>
+<li>
+<p>一个信号发出后，会立即执行其连接的槽函数，等待槽函数执行完毕后，才会执行后面的代码</p>
+</li>
+<li>
+<p>如果一个信号链接了多个槽，那么会等所有的槽函数执行完毕后才执行后面的代码，槽函数的执行顺序与连接顺序相同</p>
+</li>
+</ol>
 <h2 id="_2">信号<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <p>声明信号用 <code>signals</code>，发送信号用 <code>emit</code></p>
 <p>注意：</p>
 <ol>
 <li>
-<p>所有的信号声明都是公共的，所以 <code>Qt</code> 规定不能在 <code>signals</code> 前面加 <code>public</code> 、<code>private</code>、 <code>protected</code></p>
+<p>所有的信号声明都是 <strong>公共</strong> 的，所以 Qt 规定不能在 <code>signals</code> 前面加 <code>public</code> 、<code>private</code>、 <code>protected</code></p>
 </li>
 <li>
-<p>所有的信号都没有返回值，所以返回值都用 <code>void</code></p>
+<p>所有的信号都 <strong>没有返回值</strong>，所以返回值都用 <code>void</code></p>
 </li>
 <li>
-<p>所有的信号都不需要定义，在类中声明即可</p>
+<p>所有的信号都不需要定义，在类中 <strong>声明即可</strong></p>
 </li>
 <li>
 <p>必须直接或间接继承自 <code>QOBject</code> 类，并且开头私有声明包含 <code>Q_OBJECT</code></p>
@@ -1495,12 +1583,12 @@
 </ol>
 <h2 id="_3">槽<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <p>声明槽用 <code>public/protected/private slots:</code></p>
-<p>不过如果使用下文提到的 <code>QT5</code> 的 <code>connect()</code> 函数来连接，那么任何函数（Lambda 表达式都可以）都可以作为槽函数，也就不需要用上面的声明了</p>
+<p>不过如果使用下文提到的 QT5 的 <code>connect()</code> 函数来连接，那么任何函数（Lambda 表达式都可以）都可以作为槽函数，也就不需要用上面的声明了</p>
 <h2 id="_4">连接<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
 <p>用 <code>connect()</code> 函数连接信号与槽，该函数有以下两种原型：</p>
 <ol>
 <li>
-<p><code>QT4</code> 、<code>QT5</code> 都能用</p>
+<p>QT4 、QT5 都能用</p>
 <div class="highlight"><pre><span></span><code><span class="k">static</span> <span class="n">QMetaObject</span><span class="o">::</span><span class="n">Connection</span> <span class="n">connect</span><span class="p">(</span>
     <span class="k">const</span> <span class="n">QObject</span> <span class="o">*</span><span class="n">sender</span><span class="p">,</span> <span class="c1">// 信号发送对象指针</span>
     <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">signal</span><span class="p">,</span>    <span class="c1">// 信号函数字符串，使用SIGNAL()</span>
@@ -1514,7 +1602,7 @@
 </code></pre></div>
 </li>
 <li>
-<p>仅用于 <code>QT5</code>
+<p>仅用于 QT5
     <div class="highlight"><pre><span></span><code>    <span class="k">static</span> <span class="n">QMetaObject</span><span class="o">::</span><span class="n">Connection</span> <span class="n">connect</span><span class="p">(</span>
     <span class="k">const</span> <span class="n">QObject</span> <span class="o">*</span><span class="n">sender</span><span class="p">,</span> <span class="c1">//信号发送对象指针</span>
     <span class="k">const</span> <span class="n">QMetaMethod</span> <span class="o">&amp;</span><span class="n">signal</span><span class="p">,</span><span class="c1">//信号函数地址</span>
@@ -1528,31 +1616,54 @@
 </code></pre></div></p>
 </li>
 </ol>
-<div class="highlight"><pre><span></span><code><span class="c1">// signal_slot.h</span>
-<span class="cp">#include</span> <span class="cpf">&lt;QWidget&gt;</span><span class="cp"></span>
-<span class="k">class</span> <span class="nc">signal_slot</span><span class="o">:</span> <span class="k">public</span> <span class="n">QWidget</span><span class="p">{</span>
-    <span class="n">Q_OBJECT</span>
-<span class="k">public</span><span class="o">:</span>
-    <span class="k">explicit</span> <span class="n">signal_slot</span><span class="p">(</span><span class="n">QWidget</span> <span class="o">*</span><span class="n">parent</span> <span class="o">=</span> <span class="k">nullptr</span><span class="p">);</span>
-    <span class="o">~</span><span class="n">signal_slot</span><span class="p">(){}</span>
+<h2 id="_5">其他<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<h3 id="qsignalmapper">QSignalMapper<a class="headerlink" href="#qsignalmapper" title="Permanent link">&para;</a></h3>
+<p><code>QSignalMapper</code> 的核心在于 <strong>连接-配对-再发送</strong></p>
+<p>一个简单的例子：</p>
+<div class="admonition note">
+<p class="admonition-title">Example</p>
+<p>10 个按钮分别表示 0~9，要求按哪个按钮，<code>QLineEdit</code> 控件中同步显示按钮上对应的数字</p>
+</div>
+<p><strong>连接</strong>：所有按钮的 <code>clicked()</code> 信号都连接到 <code>signalMapper</code> 上</p>
+<p><strong>配对</strong>：按钮与按钮上对应数字匹配</p>
+<p><strong>再发送</strong>：发送参数为按钮上对应数字的信号</p>
+<div class="highlight"><pre><span></span><code><span class="n">SignalMapperWidget</span><span class="o">::</span><span class="n">SignalMapperWidget</span><span class="p">(</span><span class="n">QWidget</span> <span class="o">*</span><span class="n">parent</span><span class="p">)</span> <span class="o">:</span>
+    <span class="n">QWidget</span><span class="p">(</span><span class="n">parent</span><span class="p">),</span>
+    <span class="n">ui</span><span class="p">(</span><span class="k">new</span> <span class="n">Ui</span><span class="o">::</span><span class="n">SignalMapperWidget</span><span class="p">{</span>
+    <span class="n">ui</span><span class="o">-&gt;</span><span class="n">setupUi</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+    <span class="c1">// 创建垂直布局，将垂直布局作为主布局</span>
+    <span class="n">QVBoxLayout</span><span class="o">*</span> <span class="n">vLayout</span> <span class="o">=</span> <span class="k">new</span> <span class="n">QVBoxLayout</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
 
-<span class="nl">signals</span><span class="p">:</span> <span class="c1">// signal 都是公共的，不存在访问权限</span>
-    <span class="kt">void</span> <span class="n">sig_show_val</span><span class="p">(</span><span class="k">const</span> <span class="n">QString</span> <span class="o">&amp;</span><span class="p">);</span>
+    <span class="c1">// 创建编辑框，用于显示点击按钮的文字，并且文字在右边显示</span>
+    <span class="n">QLineEdit</span><span class="o">*</span> <span class="n">edit</span> <span class="o">=</span> <span class="k">new</span> <span class="n">QLineEdit</span><span class="p">;</span>
+    <span class="n">edit</span><span class="o">-&gt;</span><span class="n">setAlignment</span><span class="p">(</span><span class="n">Qt</span><span class="o">::</span><span class="n">AlignRight</span><span class="p">);</span>
+    <span class="n">vLayout</span><span class="o">-&gt;</span><span class="n">addWidget</span><span class="p">(</span><span class="n">edit</span><span class="p">);</span> <span class="c1">// 将编辑框加入到垂直布局中</span>
 
-<span class="k">public</span> <span class="nl">slots</span><span class="p">:</span>
-    <span class="kt">void</span> <span class="n">show_val</span><span class="p">(</span><span class="k">const</span> <span class="n">QString</span> <span class="o">&amp;</span><span class="p">);</span>
+    <span class="c1">// 创建信号匹配器</span>
+    <span class="n">QSignalMapper</span><span class="o">*</span> <span class="n">signalMapper</span> <span class="o">=</span> <span class="k">new</span> <span class="n">QSignalMapper</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
 
-<span class="k">private</span><span class="o">:</span>
-    <span class="n">Ui</span><span class="o">::</span><span class="n">signal_slot</span> <span class="o">*</span><span class="n">ui</span><span class="p">;</span>
+    <span class="c1">// 创建0-9数字键，并都加入到网格布局中</span>
+    <span class="n">QGridLayout</span> <span class="o">*</span><span class="n">gridLayout</span> <span class="o">=</span> <span class="k">new</span> <span class="n">QGridLayout</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">){</span>
+        <span class="n">QString</span> <span class="n">txt</span> <span class="o">=</span> <span class="n">QString</span><span class="o">::</span><span class="n">number</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+        <span class="n">QPushButton</span> <span class="o">*</span><span class="n">button</span> <span class="o">=</span> <span class="k">new</span> <span class="n">QPushButton</span><span class="p">(</span><span class="n">txt</span><span class="p">);</span>
+        <span class="n">connect</span><span class="p">(</span><span class="n">button</span><span class="p">,</span> <span class="n">SIGNAL</span><span class="p">(</span><span class="n">clicked</span><span class="p">()),</span> <span class="n">signalMapper</span><span class="p">,</span> <span class="n">SLOT</span><span class="p">(</span><span class="n">map</span><span class="p">()));</span>
+        <span class="n">signalMapper</span><span class="o">-&gt;</span><span class="n">setMapping</span><span class="p">(</span><span class="n">button</span><span class="p">,</span> <span class="n">txt</span><span class="p">);</span> <span class="c1">// 将按钮和要发送的字符串配对</span>
+        <span class="n">gridLayout</span><span class="o">-&gt;</span><span class="n">addWidget</span><span class="p">(</span><span class="n">button</span><span class="p">,</span> <span class="n">i</span> <span class="o">/</span> <span class="mi">3</span><span class="p">,</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">3</span><span class="p">);</span> <span class="c1">// 一行显示3列</span>
+    <span class="p">}</span>
+
+    <span class="c1">// 连接配对信号和设置文字槽</span>
+    <span class="n">connect</span><span class="p">(</span><span class="n">signalMapper</span><span class="p">,</span> <span class="n">SIGNAL</span><span class="p">(</span><span class="n">mapped</span><span class="p">(</span><span class="n">QString</span><span class="p">)),</span><span class="n">edit</span><span class="p">,</span> <span class="n">SLOT</span><span class="p">(</span><span class="n">setText</span><span class="p">(</span><span class="n">QString</span><span class="p">)));</span>
+
+    <span class="n">vLayout</span><span class="o">-&gt;</span><span class="n">addLayout</span><span class="p">(</span><span class="n">gridLayout</span><span class="p">);</span>
+    <span class="n">resize</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">200</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="c1">// signal_slot.cpp</span>
-<span class="cp">#include</span> <span class="cpf">&quot;signal_slot.h&quot;</span><span class="cp"></span>
-
-<span class="n">signal_slot</span><span class="o">::~</span><span class="n">signal_slot</span><span class="p">(){</span>
-    <span class="k">delete</span> <span class="n">ui</span><span class="p">;</span>
-<span class="p">}</span>
+<h3 id="_6">获取信号发送者<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">QObject</span><span class="o">*</span> <span class="nf">sender</span><span class="p">();</span> <span class="c1">// 获取指向信号发送者的指针</span>
 </code></pre></div>
+<h3 id="_7">解绑定信号槽<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<p>把连接函数中的 <code>connect</code> 改成 <code>disconnect</code> 即可</p>
                 
               
               
@@ -1653,8 +1764,6 @@
         <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-      
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
       
     
   </body>

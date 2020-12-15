@@ -44,8 +44,6 @@
     
       <link rel="stylesheet" href="../../stylesheets/extra.css">
     
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/default.min.css">
-    
     
       
     
@@ -759,6 +757,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../../algo/search/DFS/md" class="md-nav__link">
+      DFS
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../../algo/search/cut/" class="md-nav__link">
       剪枝
     </a>
@@ -1184,6 +1194,33 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    行间代码块语法高亮
+  </a>
+  
+    <nav class="md-nav" aria-label="行间代码块语法高亮">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pygments" class="md-nav__link">
+    Pygments 主题更换
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#highlightjs-pygments" class="md-nav__link">
+    使用 highlight.js 替代 Pygments
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1441,6 +1478,33 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    行间代码块语法高亮
+  </a>
+  
+    <nav class="md-nav" aria-label="行间代码块语法高亮">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pygments" class="md-nav__link">
+    Pygments 主题更换
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#highlightjs-pygments" class="md-nav__link">
+    使用 highlight.js 替代 Pygments
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1462,6 +1526,8 @@
 <h2 id="_1">图片放大<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p><a href="https://segmentfault.com/a/1190000018592279">参考：基于mkdocs-material实现的帮助中心(markdown + 中文搜索 + 图片放大)</a></p>
 <h2 id="gitalk">基于 Gitalk 搭建评论系统<a class="headerlink" href="#gitalk" title="Permanent link">&para;</a></h2>
+<ol>
+<li>
 <p>在你的 github 下新建一个专门用来放评论的仓库 comment，再申请一个申请 clientID 和 clientSecret，<a href="https://github.com/settings/applications/new">点击这个链接</a>就可以申请了</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -1469,21 +1535,23 @@
 <p><code>Homepage URL</code> 就是你博客的主页地址</p>
 <p><code>Authorization callback URL</code> 保持和 <code>Homepage URL</code> 一样</p>
 </div>
+</li>
+<li>
 <p>找到 <code>mkdocs-material</code> 安装路径</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>终端中输入
+<p>终端中输入</p>
 <div class="highlight"><pre><span></span><code>python3
+import material
+material
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>import material
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>material
-</code></pre></div>
-然后应该就能看到
-<div class="highlight"><pre><span></span><code>&lt;module &#39;material&#39; from &#39;/usr/local/lib/python3.8/site-packages/material/__init__.py&#39;&gt;
+<p>然后应该就能看到
+<div class="highlight"><pre><span></span><code>&lt;module <span class="s1">&#39;material&#39;</span> from <span class="s1">&#39;/usr/local/lib/python3.8/site-packages/material/__init__.py&#39;</span>&gt;
 </code></pre></div>
 后面路径的上一级 <code>/usr/local/lib/python3.8/site-packages/material</code> 就是 <code>mkdocs-material</code> 的安装路径</p>
 </div>
+</li>
+<li>
 <p><code>Finder</code> 中前往上面的路径，进入 <code>/partials/intergrations</code>，打开里面的 <code>disqus.html</code></p>
 <p>用下面的代码覆盖 <code>disqus.html</code> 里面的内容</p>
 <div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">h2</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;__comments&quot;</span><span class="p">&gt;</span>{{ lang.t(&quot;meta.comments&quot;) }}<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
@@ -1509,6 +1577,16 @@
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>注意 <code>repo</code> 填的是 <strong>仓库名</strong> 而不是地址，否则就会出现 <code>Failed: NOT Found</code></p>
+</div>
+</li>
+</ol>
+<h2 id="_2">行间代码块语法高亮<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h3 id="pygments">Pygments 主题更换<a class="headerlink" href="#pygments" title="Permanent link">&para;</a></h3>
+<p>下载对应主题的 <code>css</code> 样式文件，再在 <code>Mkdocs.yml</code> 的 <code>extra_css:</code> 项中加入即可</p>
+<h3 id="highlightjs-pygments">使用 highlight.js 替代 Pygments<a class="headerlink" href="#highlightjs-pygments" title="Permanent link">&para;</a></h3>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>强烈不建议这么做，一来 highlight.js 分词效果不如 pygments；二来 hightlight.js 是前端实现，影响网页加载速度；三来如果使用 hightlight.js，嵌套、缩进代码块等功能将无法使用</p>
 </div>
                 
               
@@ -1610,8 +1688,6 @@
         <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-      
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
       
     
   </body>

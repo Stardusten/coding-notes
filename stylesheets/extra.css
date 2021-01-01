@@ -17,7 +17,7 @@
 }
 
 body {
-    font-family: 'Fira Code''Fira''PingFang SC''Microsoft Yahei';
+    font-family: 'Fira Code''Noto Sans SC';
     background-image:url('bg.png');
     background-repeat:no-repeat;
     background-attachment:fixed;
@@ -27,6 +27,7 @@ body {
 
 .md-typeset code {
     font-family: 'Fira Code';
+    font-weight: 400;
     padding: 1px 3px 1px 3px;
 }
 

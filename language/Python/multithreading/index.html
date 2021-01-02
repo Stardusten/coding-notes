@@ -473,6 +473,68 @@
           
 
 
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-2-2" type="checkbox" id="nav-2-2-2">
+    
+    <label class="md-nav__link" for="nav-2-2-2">
+      面向对象
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="面向对象" data-md-level="3">
+      <label class="md-nav__title" for="nav-2-2-2">
+        <span class="md-nav__icon md-icon"></span>
+        面向对象
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Object-oriented/method/" class="md-nav__link">
+      三类方法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Object-oriented/visible/" class="md-nav__link">
+      访问权限
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Object-oriented/magic_methods/" class="md-nav__link">
+      魔法函数
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
   <li class="md-nav__item">
     <a href="../tds/" class="md-nav__link">
       推导式
@@ -1734,9 +1796,6 @@
 <h3 id="thread">继承 Thread<a class="headerlink" href="#thread" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">threading</span> <span class="kn">import</span> <span class="n">Thread</span>
 <span class="k">class</span> <span class="nc">multithreading_task</span><span class="p">(</span><span class="n">Thread</span><span class="p">):</span> <span class="c1"># 继承 Thread</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
-
     <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="c1"># 重写 run 方法</span>
 </code></pre></div>
@@ -1857,7 +1916,7 @@
 <div class="highlight"><pre><span></span><code>40000000
 </code></pre></div>
 <h3 id="_6">可重入互斥锁<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
-<p>可重入互斥锁(Reentrant Mutex)，相比普通互斥锁，<code>RLock</code> 可以多次 <code>acquire</code> ，常用与递归中</p>
+<p>可重入互斥锁(Reentrant Mutex)，相比普通互斥锁，<code>RLock</code> 可以多次 <code>acquire</code> ，常用于递归中</p>
 <p>注意：<code>acquir</code> 了多少次，对应也应该 <code>release</code> 多少次</p>
 <h3 id="event">Event<a class="headerlink" href="#event" title="Permanent link">&para;</a></h3>
 <p><center></p>
@@ -2059,28 +2118,63 @@ Thread-1 Start
 </thead>
 <tbody>
 <tr>
-<td align="center"><code>max_forcers()</code></td>
-<td align="center">删除并返回队头元素</td>
-</tr>
-<tr>
 <td align="center"><code>submit()</code></td>
-<td align="center">从队尾插入元素，<code>join</code> 计数器加一</td>
+<td align="center">尝试将任务放入线程池，若已满则排队</td>
 </tr>
 <tr>
 <td align="center"><code>done()</code></td>
-<td align="center">从队尾插入元素，<code>join</code> 计数器加一</td>
+<td align="center">判断任务是否完成</td>
 </tr>
 <tr>
 <td align="center"><code>cancel()</code></td>
-<td align="center"><code>join</code> 计数器减一（与 <code>get()</code> 配对使用）</td>
+<td align="center">若任务还在排队，则取消该任务</td>
 </tr>
 <tr>
 <td align="center"><code>result()</code></td>
-<td align="center">计数器，不为 0 则阻塞</td>
+<td align="center">获得任务的返回值，如果还在排队或正在执行则阻塞</td>
 </tr>
 </tbody>
 </table>
 <p></center></p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">concurrent.futures</span> <span class="kn">import</span> <span class="n">ThreadPoolExecutor</span>
+<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
+
+<span class="k">def</span> <span class="nf">download_simulate</span><span class="p">(</span><span class="n">sleep_time</span><span class="p">):</span>
+    <span class="n">sleep</span><span class="p">(</span><span class="n">sleep_time</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">sleep_time</span>
+
+<span class="n">pool</span><span class="o">=</span><span class="n">ThreadPoolExecutor</span><span class="p">(</span><span class="n">max_workers</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># 同时最多开 2 个线程用于下载</span>
+<span class="n">tasks</span><span class="o">=</span><span class="p">[]</span>
+<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">11</span><span class="p">):</span>
+    <span class="n">tasks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pool</span><span class="o">.</span><span class="n">submit</span><span class="p">(</span><span class="n">download_simulate</span><span class="p">,(</span><span class="mi">1</span><span class="p">)))</span>
+<span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Task 1 is finished? </span><span class="si">{</span><span class="n">tasks</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">done</span><span class="p">()</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Can task 1 be cancelled? </span><span class="si">{</span><span class="n">tasks</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">cancel</span><span class="p">()</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Task 3 is finished? </span><span class="si">{</span><span class="n">tasks</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">done</span><span class="p">()</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Can task 3 be cancelled? </span><span class="si">{</span><span class="n">tasks</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">cancel</span><span class="p">()</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Task 5 is finished? </span><span class="si">{</span><span class="n">tasks</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">done</span><span class="p">()</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Can task 5 be cancelled? </span><span class="si">{</span><span class="n">tasks</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">cancel</span><span class="p">()</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">sq</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">sq</span><span class="o">==</span><span class="mi">4</span><span class="p">:</span>
+        <span class="k">continue</span> <span class="c1"># task 5 被取消了，不能调用 result() 方法</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Task </span><span class="si">{</span><span class="n">sq</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s1"> slept </span><span class="si">{</span><span class="n">tasks</span><span class="p">[</span><span class="n">sq</span><span class="p">]</span><span class="o">.</span><span class="n">result</span><span class="p">()</span><span class="si">}</span><span class="s1">s&#39;</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Task 1 is finished? True
+Can task 1 be cancelled? False
+Task 3 is finished? False
+Can task 3 be cancelled? False
+Task 5 is finished? False
+Can task 5 be cancelled? True
+Task 1 slept 1s
+Task 2 slept 1s
+Task 3 slept 1s
+Task 4 slept 1s
+Task 6 slept 1s
+Task 7 slept 1s
+Task 8 slept 1s
+Task 9 slept 1s
+Task 10 slept 1s
+</code></pre></div>
                 
               
               

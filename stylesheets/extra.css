@@ -1,23 +1,4 @@
-.md-typeset h4 {
-    color: black;
-    font-size: large;
-    font-weight: normal;
-}
-
-.md-typeset h5 {
-    color: black;
-    font-size: large;
-    font-weight: normal;
-}
-
-.md-typeset h6 {
-    color: black;
-    font-size: large;
-    font-weight: normal;
-}
-
 body {
-    font-family: 'Fira Code''Noto Sans SC';
     background-image:url('bg.png');
     background-repeat:no-repeat;
     background-attachment:fixed;
@@ -26,13 +7,6 @@ body {
 }
 
 .md-typeset code {
-    font-family: 'Fira Code';
     font-weight: 400;
-    padding: 1px 3px 1px 3px;
+    padding: 2px 4px 2px 4px;
 }
-
-.codehilite code, .codehilite pre {
-    padding: 6px 0px 6px 12px;
-    margin-bottom: 16px;
-  }
-  
